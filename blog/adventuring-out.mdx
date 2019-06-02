@@ -1,0 +1,147 @@
+---
+title: Adventuring Out
+date: 2017-01-01
+series:
+  - elixir
+  - programming
+---
+
+As a lot of people do ringing in the new year, I made a resolution: To learn and become competent in at least one new programming language that has nothing to do with JavaScript. I’ve dabbled in some languages over the years since learning JavaScript—[CoffeeScript], [Python], [Ruby], [F#], [PureScript], [OCaml], [Elm], and a few others, but never on the level of JavaScript.
+
+[coffeescript]: http://coffeescript.org/
+[python]: https://www.python.org/
+[ruby]: https://www.ruby-lang.org/en/
+[f#]: http://fsharp.org/
+[purescript]: http://www.purescript.org/
+[ocaml]: https://ocaml.org/
+[elm]: http://elm-lang.org/
+
+<!--more-->
+
+While I enjoy learning new syntaxes and “The right tool for the right job,” it’s hard to maintain a steady level of learning while being only on the front-end side of web development. Being in front-end means you only use one language and one environment (essentially): JavaScript and the browser. JavaScript is an awesome language and the browser is an awesome place to be right now, but they’re hindering my learning and my natural drive to [be the very best like no one ever was](https://youtu.be/JuYeHPFR3f0). It was time to learn and use a new language on my own that had nothing to deal with work.
+
+### The Problem
+
+#### TL;DR: I’m picky and it’s really hard to find the perfect language for me.
+
+I’m picky. I like JavaScript not because it’s extremely abusable, but because you can program in multiple paradigms with it. You can write JS that’s [object-oriented][object-oriented] (for you Java folk 😉), [prototype-based], and in the regular-ol imperative style. You can come from many different languages and probably find that JS has some way of supporting your style.
+
+[object-oriented]: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object-oriented_JS
+[prototype-based]: https://en.wikipedia.org/wiki/Prototype-based_programming
+
+My favorite and preferred style of writing code is [functional]. I won’t go into detail on why, but the rules and regulations of most functional languages fit into my natural way of thinking (functions over classes, immutable data over mutable, pure functions over statefulness). JS is also a functional language, so I enjoyed writing functional code with it. I’m proud to say all the new JS code I’ve written (4800+ lines in a project at work alone) is 99.999% functional.
+
+[functional]: https://en.wikipedia.org/wiki/Functional_programming
+
+![](./assets/images/fp-trend.png)
+
+> Functional programming doesn’t even hold a candle to the popularity and mind-share of object-oriented programming
+
+When thinking about what language to pick, I knew I wanted to learn a functional one. If it had a `class` keyword, I wasn't going to learn it. Unfortunately, functional programming largely died out in the 70s/80s and has yet to make a huge comeback. I also wanted a strong type system. It's a big thing I think JS lacks, but I can understand it makes it harder for new devs to get into it, so I can forgive JS for that. I also want the awesome ecosystem and vibrancy of JavaScript.
+
+### CoffeeScript
+
+After dabbling in a few languages I’ve learned what I liked about all of them and what makes them fun to write in. I like CoffeeScript mainly because of it’s unapologetically minimalistic syntax:
+
+```
+addOne = (a) -> a + 1
+```
+
+Equivalent to this in JS:
+
+```
+var addOne = function(a) {
+  return a + 1;
+};
+```
+
+But it’s really just sugar’d syntax around JS that compiles right down to regular ol’ JS. And I already know JS. NEXT!
+
+### Ruby
+
+Ruby is awesome simply because of the entirely ginormous ecosystem and developer friendliness. You’ll be hard-pressed to find a nicer language to write in. But, for how nice it is as a language, it lacks in performance. And it’s OO 👎.
+
+### F&#35;
+
+F# is a language made by Microsoft and is part of the .NET stack. It’s multi-paradigm, but largely focuses on functional programming. F# is also strongly typed, much like Java, but comes with type inference, meaning if you wrote `let a = 1`, it'll just assume that `a` is of type `int` (it gets its types from .NET). Oh, and it has the best operator ever in a programming language: The pipe:
+
+```
+// pipe operator
+[1..100]
+  |> List.sum
+  |> printfn "sum=%d"
+// The fact that you can create a 100 item array with
+// the numbers 1 through 100 by just writing [1..100] is AMAZING
+// no curly braces, semicolons or parentheses
+let square x = x * x
+let sq = square 42
+// simple types in one line
+type Person = {First:string; Last:string}
+// complex types in a few lines
+type Employee =
+  | Worker of Person
+  | Manager of Employee list
+// type inference
+let jdoe = {First="John";Last="Doe"} // jdoe is of type Person
+let worker = Worker jdoe
+```
+
+Simply beautiful.
+
+Unfortunately, writing in a functional style in F# is, while the most preferred, not enforced. I like that it accommodates programmers coming at it from multiple angles (it kinda has to because of .NET’s huge amount of C# developers), but I want to be forced to write functionally — I do not want an out. Boy do I like it’s type system, though. Mmmmm :)
+
+### PureScript, OCaml, Elm, and Others
+
+These languages are all similar functional languages. PureScript is [very much like][influenced] [Haskell][haskell]. It is a very young language, though.
+
+[haskell]: https://www.haskell.org/
+[influenced]: https://github.com/purescript/documentation/blob/master/language/Differences-from-Haskell.md
+
+OCaml is the complete opposite. It’s kinda old (made in the mid 90s, OCaml is part of the ML family of languages, originally made back in the 70s). It also is bad at concurrency (one of the natural benefits of a functional language is concurrency out of the box, generally). [BuckleScript] is a crazy awesome project which will compile OCaml code to JavaScript that looks human-written. Combined with Facebook’s [ReasonML], you actually write React code that looks like it’s written by humans (by writing Reason code) :D
+
+[bucklescript]: https://github.com/bloomberg/bucklescript
+[reasonml]: https://reasonml.github.io/
+
+Elm is a nice language, but is somehow made only for the web browser? It’s really nice to look at in my eyes and the type system is nice (don’t get me started on it’s [developer friendliness]), but for some reason the creator thought it would be best to make it a compile-to-js language dependent on a bundled runtime that only works in a browser environment (only good for making interfaces in the DOM). I’m not sure why this is, but I don’t think it will help me writing non-front-end code.
+
+[developer friendliness]: http://elm-lang.org/blog/compiler-errors-for-humans
+
+### What Language Should I Pick?
+
+All of these languages have some cool things and check of many boxes I have, but none check them all, and most don’t have anything close to a developer mind-share. Reason + BuckleScript sounds awesome, but is so new it’s considered in a prototype stage. CoffeeScript is just JavaScript underneath and I don’t want to be stuck with V8 and Node (single-threaded…). Elm is front-end only. Ruby is still OO, and while F# has an amazing type system, it’s still not 100% functional. I thought I couldn’t find a language for me. All hope was lost. Sean sad.
+
+### The Solution
+
+I honestly have no idea how I heard about it, but I ended up finding a language. The earliest thing in my Google history I could dig up about it was [an article I read back in August](https://blog.gitmonitor.com/gitmonitor-on-elixir-92a87c7eb382).
+
+The language is [Elixir](http://elixir-lang.org/).
+
+### What I like About It
+
+Elixir checks of most of the boxes I want in a language to learn.
+
+- 100% Functional
+- [Wonderful concurrency](http://www.unlimitednovelty.com/2009/01/cutting-edge-of-vm-design.html)
+- Pipe operator
+- Made for web development
+- Beautiful syntax
+- Amazing community
+- Pipe operator
+- Great editor support
+- Great tooling
+- Strong history (for an extremely young language)
+- `|>`
+
+That’s not to say it’s perfect, though.
+
+### What's Missing
+
+- Types 😿
+- Ecosystem not quite as large as JavaScript and some other popular languages
+- Deployment story is a bit different than most because of the BEAM VM. More on that later.
+
+All of that being said, Elixir is pretty much the language I want to learn now. It’s a young language (written in 2011), but stands on the shoulders of giants. It was written by a Ruby on Rails core team member, and compiles down to the Erlang (written in 1986) VM (BEAM) bytecode, so it runs on it. And even though the ecosystem is young and there’s a noticeable lack of types, it’s not a deal-breaker for me. Elixir is still a great language and I look forward to learning it!
+
+Oh, and about a month ago I wrote some Elixir just to get the hang of it and made a [GraphQL](http://graphql.org/) API with it. You can find that project [here](https://github.com/sean-clayton/graph_ql). I also started answering the Elixir questions on [Exercism.io](http://exercism.io/) and put them in a [Git repository here](https://github.com/sean-clayton/exercism-answers).
+
+Til next time!

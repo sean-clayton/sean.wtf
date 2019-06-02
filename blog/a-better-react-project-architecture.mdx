@@ -1,0 +1,119 @@
+---
+title: A Better React Project Architecture
+date: 2018-04-04
+series:
+  - react
+  - javascript
+  - programming
+---
+
+### The Problem
+
+React has zero interest in your project structure and JavaScript doesn't enforce one either, so users are left to their own devices when organizing their React applications. There are a few goals that usually indicate a good architecture:
+
+1.  The directory structure is easy to navigate
+1.  It is obvious where you should create new files when looking at the directory structure
+1.  It easily adapts to business requirements
+
+### Typical React Application Architecture
+
+To demonstrate effective React project architecture, we'll first look at how a typical React + Redux application looks like. The app we're envisioning is a simple blogging app, where a user logs in and creates posts.
+
+```
+src
+  - Root.js
+  - store.js
+  - components/
+    - User.js
+    - Post.js
+    - Auth.js
+  - actions/
+    - UserActions.js
+    - PostActions.js
+    - AuthActions.js
+  - reducers/
+    - UserReducer.js
+    - PostReducer.js
+    - AuthReducer.js
+```
+
+This looks fine and dandy, but what happens when we need to debug something wrong with posts? We have to navigate several folders to possibly find the culprit. Also, what happens when we need to add a new feature like adding comments to posts? Let's look at that diff.
+
+```
+ src
+   - Root.js
+   - store.js
+   - components/
+     - User.js
+     - Post.js
+     - Auth.js
++    - Comment.js
+   - actions/
+     - UserActions.js
+     - PostActions.js
+     - AuthActions.js
++    - CommentActions.js
+   - reducers/
+     - UserReducer.js
+     - PostReducer.js
+     - AuthReducer.js
++    - CommentReducer.js
+```
+
+Once again, we're navigating several folders to make sure our ducks are in order. It'll get even messier if we messed with something like Redux middlewares or sagas from redux-saga or epics from redux-observable. The point is this: This kind of structure will not scale according to the business effectively in comparison to a more streamlined approach. Let's see what that approach looks like.
+
+### A Better React Application Architecture
+
+```
+src
+  - app/
+      - Root.js
+      - store.js
+      - ui/
+        - User.js
+        - Post.js
+        - Auth.js
+  - auth/
+    - auth.js
+    - session.js
+  - accounts/
+    - accounts.js
+    - user.js
+  - blog/
+    - blog.js
+    - post.js
+```
+
+You'll notice that we have separated our application into their own contexts. This means we no longer just have a concept of a "post" or a "user", but instead we finally have clarity around our business concerns. We now have accounts and a blog—these words didn't exist in our previous structure. Our UI code is also encapsulated by its context (the interface to these business concepts which make our application). Let's add those comments again.
+
+```
+ src
+   - app/
+       - Root.js
+       - store.js
+       - ui/
+         - User.js
+         - Post.js
+         - Auth.js
++        - Comment.js
+   - auth/
+     - auth.js
+     - session.js
+   - accounts/
+     - accounts.js
+     - user.js
+   - blog/
+     - blog.js
+     - post.js
++    - comment.js
+```
+
+This works well for adding new business requirements. We also have an understanding that we have a blog, which has posts and comments. Before, we just had a comments _thing_. It could have easily meant that we could comment on user profiles.
+
+### Wrapping Up
+
+So we can see from this architecture, creating (and even removing!) features can be a breeze. Once we know the business requirements we can quickly add our features to the applications we build.
+
+#### Postface
+
+I would be remiss to not acknowledge prior art of this architecture. This architecture is not widely spread throughout the React ecosystem, but is popular throughout many other languages. Phoenix, a web application framework for the Elixir language, uses this context concept. The real source of this architecture, though, comes from a development approach called [Domain-driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) (DDD). This pattern can be used in nearly any language and is meant to put the domain of the business front-and-center.

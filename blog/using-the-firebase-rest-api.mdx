@@ -1,0 +1,106 @@
+---
+title: Using the Firebase REST API
+date: 2018-11-02
+series:
+  - programming
+---
+
+### Creating a Firebase Application
+
+Firebase is a Google product, so in order to make a Firebase project you'll need a Google account.
+Once you have one of those, head to https://console.firebase.google.com.
+You should see a page that looks like the following screenshot.
+Go ahead and add a project, give it a name, and don't worry about any other settings.
+
+![](./assets/images/fb-01.png)
+
+Once you finish up adding a project, you should see a nice success popup saying "Your new project is ready."
+At that point, click the "Continue" button.
+
+### Creating a Firebase Database
+
+On the left-hand panel you should see a "Database" link—go there.
+Once there you'll see a nice little page that has a bit of information on Firebase databases, but there should also be a button that says "Create database," which you'll want to click.
+_*PLEASE NOTE*_: Make sure you start your database in "test mode" (unless you've worked Firebase before and know about permissions).
+This allows anyone to start creating and reading data from this project's database.
+Once you do that, click the "Enable" button.
+
+![](./assets/images/fb-02.png)
+
+### Hitting the API
+
+That's all it takes to create your database, but now you'll want to hit it from your application.
+I'm going to assume you're using the browser and have access to the `fetch` browser function.
+
+You can create collections in Firebase by just creating an item _inside_ of the collection, like so:
+
+```
+const res = await fetch(
+  "https://my-awesome-project-2e475.firebaseio/my-cool-collection.json",
+  {
+    method: "POST",
+    body: JSON.stringify({
+      foo: "bar",
+      fizz: "buzz"
+    })
+  }
+).then(r => r.json());
+
+console.log(res);
+// { name: "-LQKG2GXHBzTgbzzUEC2" }
+```
+
+And then you can get all the items in your collection!
+
+```
+const res = await fetch(
+  "https://my-awesome-project-2e475.firebaseio/my-cool-collection.json"
+).then(r => r.json());
+
+console.log(res);
+/*
+{
+  "-LQKG2GXHBzTgbzzUEC2": {
+    "fizz": "buzz",
+    "foo": "bar"
+  }
+}
+*/
+```
+
+You'll notice that we get an object instead of an array back from the API.
+There's some benefits to this, namely we can just grab an item from the collection if we only have it's ID, like such:
+
+```
+const id = "-LQKG2GXHBzTgbzzUEC2";
+const item = res[id];
+
+console.log(item);
+// { fizz: "buzz", foo: "bar" }
+```
+
+If we want to conver that object into an array, we can use an object method called `Object.entries`.
+I won't go over exactly what that does, but it essentially creates an array of arrays, so we can map over that array.
+Here is how we can use this:
+
+```
+const collectionArr = Object.entries(res).map(([id, attrs]) => ({
+  id,
+  ...attrs
+}));
+
+console.log(collectionArr);
+// [{ id: -LQKG2GXHBzTgbzzUEC2, fizz: "buzz", foo: "bar" }]
+```
+
+### Where to go From Here
+
+So we've explained how to `GET` and `POST` to a Firebase API.
+Firebase has a set of documentation on it's REST API, which you can find here:
+https://firebase.google.com/docs/reference/rest/database/
+
+From there you can see how to update items and delete them, or even [filter items] and [order items] in a collection!
+Hopefully this gives you a good starting point on working with the Firebase REST API.
+
+[filter items]: https://firebase.google.com/docs/database/rest/retrieve-data#section-rest-filtering
+[order items]: https://firebase.google.com/docs/database/rest/retrieve-data#section-rest-ordered-data
