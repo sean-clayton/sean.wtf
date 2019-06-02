@@ -226,7 +226,20 @@ const Layout = ({ children, customSEO }) => {
         {children}
         <Footer>
           &copy; 2017–{new Date().getFullYear()} by S. P. O. Clayton. All rights
-          reserved. <br />
+          reserved.
+          <br />
+          All writings on this site by Sean Clayton are available under the{" "}
+          <a
+            target="_blank"
+            rel="noopener"
+            href="https://creativecommons.org/licenses/by-sa/4.0/"
+          >
+            CC BY-SA 4.0
+          </a>{" "}
+          license.
+          <br />
+          <a href="/cc-by-sa-4.0.txt">You can view the license here.</a>
+          <br />
           <a href="https://github.com/sean-clayton/sean.wtf">GitHub Repo</a>
         </Footer>
       </>
