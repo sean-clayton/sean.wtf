@@ -55,6 +55,14 @@ const globalStyle = (
         color: ${theme.colors.primary};
         text-decoration: none;
         transition: color ${theme.transitions.normal};
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        word-break: break-all;
+        word-break: break-word;
+        -ms-hyphens: auto;
+        -moz-hyphens: auto;
+        -webkit-hyphens: auto;
+        hyphens: auto;
       }
       a:hover {
         color: ${theme.colors.primaryLight};
@@ -80,13 +88,18 @@ const globalStyle = (
         color: ${theme.colors.grey.dark};
         font-family: ${theme.fontFamily.monospace};
       }
+      hr {
+        border: none;
+        border-bottom: 4px dotted ${theme.colors.primaryLight};
+      }
       blockquote {
         font-style: italic;
         position: relative;
       }
-      ul {
-        li,
-        ol {
+      ul,
+      ol {
+        font-size: 1.1rem;
+        li {
           line-height: 1.58;
           font-size: inherit;
         }
@@ -128,6 +141,7 @@ const globalStyle = (
         line-height: 1.58;
         padding: 1rem;
         background-color: ${theme.colors.primaryXLight};
+        box-shadow: 0 0 0 1px ${theme.colors.primary};
 
         code {
           background-color: transparent;
@@ -231,7 +245,7 @@ const Layout = ({ children, customSEO }) => {
           All writings on this site by Sean Clayton are available under the{" "}
           <a
             target="_blank"
-            rel="noopener"
+            rel="noopener noreferrer"
             href="https://creativecommons.org/licenses/by-sa/4.0/"
           >
             CC BY-SA 4.0

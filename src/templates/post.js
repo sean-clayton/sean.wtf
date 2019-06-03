@@ -4,16 +4,7 @@ import { transparentize } from "polished";
 import styled from "@emotion/styled";
 import kebabCase from "lodash/kebabCase";
 import MDXRenderer from "gatsby-mdx/mdx-renderer";
-
-import {
-  Layout,
-  Wrapper,
-  Header,
-  Subline,
-  SEO,
-  PrevNext,
-  SpotifyPlayer
-} from "../components";
+import { Layout, Wrapper, Header, Subline, SEO, PrevNext } from "../components";
 import config from "../../config";
 
 const Content = styled.article`
@@ -109,17 +100,15 @@ const Post = ({
           </Title>
           <Subline>
             {post.date} &mdash; {postNode.timeToRead} Min Read &mdash;{" "}
-            {post.series.map((cat, i) => (
+            {(post.series || []).map((cat, i) => (
               <React.Fragment key={cat}>
                 {"#"}
-                <Link to={`/series/${kebabCase(cat)}`}>{cat}</Link>{" "}
+                <Link to={`/series/${kebabCase(cat || "")}`}>{cat}</Link>{" "}
               </React.Fragment>
             ))}
           </Subline>
           <PostContent>
-            <MDXRenderer scope={{ SpotifyPlayer }}>
-              {postNode.code.body}
-            </MDXRenderer>
+            <MDXRenderer>{postNode.code.body}</MDXRenderer>
           </PostContent>
           <PrevNext prev={prev} next={next} />
         </Content>

@@ -78,7 +78,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const seriesSet = new Set();
 
   _.each(posts, n => {
-    if (_.get(n, "frontmatter.series")) {
+    if (_.get(n, "frontmatter.series", [])) {
       n.frontmatter.series.forEach(cat => {
         seriesSet.add(cat);
       });
