@@ -3,7 +3,7 @@ module.exports = {
   siteTitle: "Sean WTF", // Navigation and Site Title
   siteTitleAlt: "Sean WTF", // Alternative Site title for SEO
   siteTitleManifest: "Sean WTF",
-  siteUrl: "https://sean.wtf", // Domain of your site. No trailing slash!
+  siteUrl: "https://www.sean.wtf", // Domain of your site. No trailing slash!
   siteLanguage: "en", // Language Tag on <html> element
   siteHeadline: "Sean WTF", // Headline for schema.org JSONLD
   siteBanner: "/social/banner.png", // Your image for og:image tag. You can find it in the /static folder
