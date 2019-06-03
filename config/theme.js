@@ -2,7 +2,7 @@ import { lighten, transparentize } from "polished";
 
 const colors = {
   primary: "#0077ff",
-  primaryLight: lighten(0.05, "#0077ff"),
+  primaryLight: lighten(0.1, "#0077ff"),
   primaryXLight: transparentize(0.95, "#0077ff"),
   bg: "#fff",
   grey: {
@@ -37,7 +37,7 @@ const theme = {
   fontSize,
   breakpoints,
   fontFamily,
-  maxWidth: "50em",
+  maxWidth: "45em",
   baseFontSize: "18px"
 };
 
