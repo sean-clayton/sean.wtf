@@ -151,7 +151,6 @@ const globalStyle = (
       code {
         background-color: ${transparentize(0.9, theme.colors.primary)};
         color: ${darken(0.1, theme.colors.primary)};
-        padding: 0 0.25em;
       }
       figure {
         margin: 0 0 1rem 0;
