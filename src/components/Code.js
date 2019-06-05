@@ -1,7 +1,6 @@
 import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
-import { transparentize } from "polished";
 import theme from "../../config/theme";
 
 const customTheme = {
