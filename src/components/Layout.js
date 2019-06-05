@@ -142,6 +142,7 @@ const globalStyle = (
         padding: 1rem;
         background-color: ${theme.colors.primaryXLight};
         box-shadow: 0 0 0 1px ${theme.colors.primary};
+        color: ${darken(0.1, theme.colors.primary)};
 
         code {
           background-color: transparent;

@@ -2,9 +2,41 @@ import React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import styled from "@emotion/styled";
 import YouTubeBase from "react-youtube";
-import { SpotifyPlayer } from "./src/components";
+import { SpotifyPlayer, Code } from "./src/components";
+
+function preToCodeBlock(preProps) {
+  if (
+    // children is MDXTag
+    preProps.children &&
+    // MDXTag props
+    preProps.children.props &&
+    // if MDXTag is going to render a <code>
+    preProps.children.props.originalType === "code"
+  ) {
+    // we have a <pre><code> situation
+    const codeString = preProps.children.props.children;
+    const { className, ...props } = preProps.children.props;
+
+    return {
+      codeString: codeString.trim(),
+      language: className && className.split("-")[1],
+      ...props
+    };
+  }
+  return undefined;
+}
 
 const components = {
+  pre: preProps => {
+    const props = preToCodeBlock(preProps);
+    // if there's a codeString and some props, we passed the test
+    if (props) {
+      return <Code {...props} />;
+    } else {
+      // it's possible to have a pre without a code in it
+      return <pre {...preProps} />;
+    }
+  },
   wrapper: ({ children }) => <>{children}</>
 };
 

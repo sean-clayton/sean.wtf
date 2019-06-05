@@ -9,6 +9,7 @@ import Subline from "./Subline";
 import Wrapper from "./Wrapper";
 import SpotifyPlayer from "./SpotifyPlayer";
 import Providers from "./Providers";
+import Code from "./Code";
 
 export {
   Providers,
@@ -21,5 +22,6 @@ export {
   SEO,
   Subline,
   Wrapper,
-  SpotifyPlayer
+  SpotifyPlayer,
+  Code
 };

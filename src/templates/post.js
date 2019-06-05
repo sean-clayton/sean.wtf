@@ -23,13 +23,6 @@ const Content = styled.article`
     }
   }
 
-  .prism-code {
-    padding: 0.75rem;
-    border-radius: 5px;
-    margin-bottom: 1rem;
-    font-size: 16px;
-  }
-
   h1,
   h2,
   h3,

@@ -1,20 +1,127 @@
 import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
-import theme from "prism-react-renderer/themes/duotoneLight";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
-import styled from "@emotion/styled";
+import theme from "../../config/theme";
 
-const StyledEditor = styled(LiveEditor)`
-  background: ${theme.plain.backgroundColor};
-  border-radius: 5px;
-  margin-bottom: 1rem;
-`;
+const customTheme = {
+  plain: {
+    backgroundColor: theme.colors.backgroundColor
+  },
+  styles: [
+    {
+      types: ["atom"],
+      style: {
+        fontWeight: "bold"
+      }
+    },
+    {
+      types: ["prolog", "doctype", "cdata", "punctuation"],
+      style: {
+        opacity: 0.7
+      }
+    },
+    {
+      types: ["comment"],
+      style: {
+        color: theme.colors.white,
+        backgroundColor: theme.colors.primary,
+        fontWeight: "bold",
+        textDecoration: "underline"
+      }
+    },
+    {
+      types: ["namespace"],
+      style: {
+        opacity: 0.7
+      }
+    },
+    {
+      types: ["tag", "operator", "number"],
+      style: {
+        opacity: 0.7
+      }
+    },
+    {
+      types: ["property", "function"],
+      style: {
+        fontWeight: "bold",
+        opacity: 0.7
+      }
+    },
+    {
+      types: ["tag-id", "selector", "atrule-id"],
+      style: {}
+    },
+    {
+      types: ["attr-name"],
+      style: {}
+    },
+    {
+      types: [
+        "boolean",
+        "string",
+        "entity",
+        "url",
+        "attr-value",
+        "control",
+        "directive",
+        "unit",
+        "statement",
+        "regex",
+        "at-rule"
+      ],
+      style: {
+        fontWeight: "bold"
+      }
+    },
+    {
+      types: ["placeholder", "variable", "builtin", "keyword"],
+      style: {
+        fontStyle: "italic"
+      }
+    },
+    {
+      types: ["keyword"],
+      style: {
+        opacity: 0.7
+      }
+    },
+    {
+      types: ["deleted"],
+      style: {
+        textDecorationLine: "line-through"
+      }
+    },
+    {
+      types: ["inserted"],
+      style: {
+        textDecorationLine: "underline"
+      }
+    },
+    {
+      types: ["italic"],
+      style: {
+        fontStyle: "italic"
+      }
+    },
+    {
+      types: ["important", "bold"],
+      style: {
+        fontWeight: "bold"
+      }
+    },
+    {
+      types: ["important"],
+      style: {}
+    }
+  ]
+};
 
 const Code = ({ codeString, language, ...props }) => {
   if (props["react-live"]) {
     return (
-      <LiveProvider code={codeString} noInline={true} theme={theme}>
-        <StyledEditor />
+      <LiveProvider code={codeString} noInline={true} theme={customTheme}>
+        <LiveEditor />
         <LiveError />
         <LivePreview />
       </LiveProvider>
@@ -25,7 +132,7 @@ const Code = ({ codeString, language, ...props }) => {
       {...defaultProps}
       code={codeString}
       language={language}
-      theme={theme}
+      theme={customTheme}
     >
       {({ className, style, tokens, getLineProps, getTokenProps }) => (
         <pre className={className} style={style}>
