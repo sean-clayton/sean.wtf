@@ -1,6 +1,7 @@
 import React from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
+import { transparentize } from "polished";
 import theme from "../../config/theme";
 
 const customTheme = {
@@ -23,7 +24,8 @@ const customTheme = {
     {
       types: ["comment"],
       style: {
-        color: theme.colors.white,
+        opacity: 0.7,
+        color: theme.colors.bg,
         backgroundColor: theme.colors.primary,
         fontWeight: "bold",
         textDecoration: "underline"
