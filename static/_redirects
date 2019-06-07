@@ -1,3 +1,4 @@
 /post/*  /:splat 301
 https://seanclayton.me/* https://www.sean.wtf/:splat 301!
+https://www.seanclayton.me/* https://www.sean.wtf/:splat 301!
 /adventuring-out-part-1/ /adventuring-out/ 301!
