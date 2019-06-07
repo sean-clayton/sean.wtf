@@ -36,7 +36,12 @@ const IdleComponentWrapper = styled.a`
 function IdleComponent({ onClick, url }) {
   return (
     <IdleComponentContainer>
-      <IdleComponentWrapper href={url} onClick={onClick}>
+      <IdleComponentWrapper
+        target="_blank"
+        rel="noopener noreferrer"
+        href={url}
+        onClick={onClick}
+      >
         <span>Play Embedded Media</span>
       </IdleComponentWrapper>
     </IdleComponentContainer>
