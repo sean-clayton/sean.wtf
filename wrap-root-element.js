@@ -2,7 +2,11 @@ import React from "react";
 import { MDXProvider } from "@mdx-js/react";
 import styled from "@emotion/styled";
 import YouTubeBase from "react-youtube";
-import { SpotifyPlayer, Code } from "./src/components";
+import {
+  SpotifyPlayer as Spotify,
+  Code,
+  ComponentPlayer
+} from "./src/components";
 
 function preToCodeBlock(preProps) {
   if (
@@ -40,18 +44,48 @@ const components = {
   wrapper: ({ children }) => <>{children}</>
 };
 
-const YouTube = styled(YouTubeBase)`
-  display: block;
-  box-sizing: border-box;
+const YouTubeStyled = styled(YouTubeBase)`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
-  min-height: 20em;
   height: 100%;
-  max-height: 30em;
-  max-width: ${p => p.theme.maxWidth};
+`;
+
+const YouTubeContainer = styled.div`
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  padding-top: 25px;
+  height: 0;
+  overflow: hidden;
+`;
+
+const YouTubeWrapper = styled.div`
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  box-sizing: border-box;
   padding: 1em;
   background-color: ${p => p.theme.colors.primaryXLight};
   box-shadow: 0 0 0 1px ${p => p.theme.colors.primary};
 `;
+
+const YouTube = p => (
+  <ComponentPlayer url={`https://www.youtube.com/${p.videoId}`}>
+    <YouTubeWrapper>
+      <YouTubeContainer>
+        <YouTubeStyled {...p} />
+      </YouTubeContainer>
+    </YouTubeWrapper>
+  </ComponentPlayer>
+);
+
+const SpotifyPlayer = p => (
+  <ComponentPlayer url={p.uri}>
+    <Spotify {...p} />
+  </ComponentPlayer>
+);
 
 const globalComponents = {
   YouTube,

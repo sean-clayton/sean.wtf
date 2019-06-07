@@ -10,8 +10,10 @@ import Wrapper from "./Wrapper";
 import SpotifyPlayer from "./SpotifyPlayer";
 import Providers from "./Providers";
 import Code from "./Code";
+import ComponentPlayer from "./ComponentPlayer";
 
 export {
+  ComponentPlayer,
   Providers,
   Article,
   Button,
