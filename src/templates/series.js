@@ -32,7 +32,7 @@ const series = ({ pageContext: { series }, data: { allMdx } }) => {
   return (
     <Layout>
       <Wrapper>
-        <Helmet title={`Series: ${seriesName} | ${config.siteTitle}`} />
+        <Helmet title={`Series: ${seriesName} | ${config.siteTitleAlt}`} />
         <Header />
         <Content>
           <Subline sectionTitle>

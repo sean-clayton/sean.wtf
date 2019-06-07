@@ -32,7 +32,7 @@ const series = ({
 }) => (
   <Layout>
     <Wrapper>
-      <Helmet title={`series | ${config.siteTitle}`} />
+      <Helmet title={`series | ${config.siteTitleAlt}`} />
       <Header />
       <Content>
         {group.map(series => (
