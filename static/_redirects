@@ -1,1 +1,2 @@
 /post/*  /:splat 301
+https://seanclayton.me/* https://www.sean.wtf/:splat 301!
