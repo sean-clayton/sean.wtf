@@ -9,20 +9,21 @@ import Subline from "./Subline";
 const Post = styled.article`
   display: flex;
   flex-direction: column;
-  margin-top: 3.5rem;
-  margin-bottom: 3.5rem;
+  margin-block-start: 2rem;
+  margin-block-end: 2rem;
 
   @media (max-width: ${props => props.theme.breakpoints.phone}) {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
+    margin-block-start: 1rem;
+    margin-block-end: 1rem;
   }
 `;
 
 const Title = styled.h2`
+  font-size: 1.1em;
   position: relative;
   margin-bottom: 1em;
   padding-bottom: 1em;
-  border-bottom: 4px dotted
+  border-bottom: 2px dotted
     ${p => transparentize(0.666, p.theme.colors.primary)};
   &:after {
     content: "";
@@ -30,7 +31,7 @@ const Title = styled.h2`
     bottom: 2px;
     display: block;
     width: 100%;
-    border-bottom: 4px dotted
+    border-bottom: 2px dotted
       ${p => transparentize(0.666, p.theme.colors.primary)};
   }
   a {
@@ -54,7 +55,7 @@ function Article({ title, date, description, slug, timeToRead, series }) {
         <Link to={`/${slug}`}>{title}</Link>
       </Title>
       <Subline>
-        {date} &mdash; {timeToRead} Min Read &mdash;{" "}
+        {timeToRead} Min Read &mdash;{" "}
         {(series || []).map((cat, i) => (
           <React.Fragment key={cat}>
             {"#"}

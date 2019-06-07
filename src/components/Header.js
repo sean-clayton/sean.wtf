@@ -1,32 +1,46 @@
 import React from "react";
 import styled from "@emotion/styled";
+import { Link } from "gatsby";
+import { transparentize, darken } from "polished";
+import config from "../../config";
 
 const Wrapper = styled.header`
-  background-color: ${props => props.theme.colors.primary};
+  background-color: ${props => transparentize(0.9, props.theme.colors.primary)};
+  border-bottom: 2px dotted ${p => transparentize(0.4, p.theme.colors.primary)};
   grid-column: 1 / -1;
   margin-left: -1rem;
   margin-right: -1rem;
-  padding: 2rem 2rem 5rem 2rem;
+  height: 150px;
+  display: flex;
 `;
 
 const Content = styled.div`
+  flex: 1;
   max-width: ${props => props.theme.maxWidth};
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
   a {
-    color: ${props => props.theme.colors.white};
-    font-size: 1.2rem;
+    color: ${props => darken(0.3, props.theme.colors.primary)};
+    font-size: 1.5em;
+    padding: 1rem;
     &:hover {
-      opacity: 0.85;
-      color: ${props => props.theme.colors.white};
+      color: ${props =>
+        transparentize(0.15, darken(0.3, props.theme.colors.primary))};
     }
   }
 `;
 
-const Header = ({ children }) => (
-  <Wrapper>
-    <Content>{children}</Content>
-  </Wrapper>
-);
+function Header() {
+  return (
+    <Wrapper>
+      <Content>
+        <Link to="/">{config.siteTitle}</Link>
+      </Content>
+    </Wrapper>
+  );
+}
 
 export default Header;

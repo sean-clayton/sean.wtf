@@ -33,11 +33,8 @@ const series = ({ pageContext: { series }, data: { allMdx } }) => {
     <Layout>
       <Wrapper>
         <Helmet title={`Series: ${seriesName} | ${config.siteTitle}`} />
-        <Header>
-          <Link to="/">{config.siteTitle}</Link>
-        </Header>
+        <Header />
         <Content>
-          <SectionTitle>Series: {seriesName}</SectionTitle>
           <Subline sectionTitle>
             {subline} (See <Link to="/series">all series</Link>)
           </Subline>

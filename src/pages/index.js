@@ -21,11 +21,8 @@ const IndexPage = ({
 }) => (
   <Layout>
     <Wrapper>
-      <Header>
-        <Link to="/">{config.siteTitle}</Link>
-      </Header>
+      <Header />
       <Content>
-        <SectionTitle>Latest Writings</SectionTitle>
         {posts.map(post => (
           <Article
             title={post.frontmatter.title}

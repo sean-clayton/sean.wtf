@@ -37,7 +37,7 @@ const theme = {
   fontSize,
   breakpoints,
   fontFamily,
-  maxWidth: "45em",
+  maxWidth: "30em",
   baseFontSize: "18px"
 };
 

@@ -19,6 +19,7 @@ const Content = styled.div`
 `;
 
 const Title = styled.h3`
+  font-size: 1.1em;
   position: relative;
   text-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
   margin-bottom: 0.75rem;
@@ -32,11 +33,8 @@ const series = ({
   <Layout>
     <Wrapper>
       <Helmet title={`series | ${config.siteTitle}`} />
-      <Header>
-        <Link to="/">{config.siteTitle}</Link>
-      </Header>
+      <Header />
       <Content>
-        <SectionTitle>series</SectionTitle>
         {group.map(series => (
           <Title key={series.fieldValue}>
             <Link to={`/series/${_.kebabCase(series.fieldValue)}`}>

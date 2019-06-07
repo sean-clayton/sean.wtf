@@ -72,6 +72,19 @@ const Title = styled.h1`
 
 const PostContent = styled.div`
   margin-top: 4rem;
+
+  a,
+  code,
+  pre code {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-all;
+    word-break: break-word;
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+  }
 `;
 
 const Post = ({
@@ -84,9 +97,7 @@ const Post = ({
     <Layout customSEO>
       <Wrapper>
         <SEO postPath={slug} postNode={postNode} article />
-        <Header>
-          <Link to="/">{config.siteTitle}</Link>
-        </Header>
+        <Header />
         <Content>
           <Title>
             <Link to={`/${slug}`}>{post.title}</Link>

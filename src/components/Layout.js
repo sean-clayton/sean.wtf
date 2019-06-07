@@ -43,6 +43,15 @@ const globalStyle = (
         h5 {
           font-size: 1.15em;
         }
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+          a {
+          }
+        }
         @media (max-width: ${theme.breakpoints.phone}) {
           font-size: 16px;
         }
@@ -55,14 +64,6 @@ const globalStyle = (
         color: ${theme.colors.primary};
         text-decoration: none;
         transition: color ${theme.transitions.normal};
-        overflow-wrap: break-word;
-        word-wrap: break-word;
-        word-break: break-all;
-        word-break: break-word;
-        -ms-hyphens: auto;
-        -moz-hyphens: auto;
-        -webkit-hyphens: auto;
-        hyphens: auto;
       }
       a:hover {
         color: ${theme.colors.primaryLight};
