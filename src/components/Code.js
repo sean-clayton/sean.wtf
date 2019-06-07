@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import theme from "../../config/theme";
@@ -118,36 +118,49 @@ const customTheme = {
   ]
 };
 
-const Code = ({ codeString, language, ...props }) => {
-  if (props["react-live"]) {
+function Code({ codeString, language, ...props }) {
+  const [loaded, setLoaded] = useState(false);
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
+
+  if (loaded) {
+    if (props["react-live"]) {
+      return (
+        <LiveProvider code={codeString} noInline={true} theme={customTheme}>
+          <LiveEditor />
+          <LiveError />
+          <LivePreview />
+        </LiveProvider>
+      );
+    }
     return (
-      <LiveProvider code={codeString} noInline={true} theme={customTheme}>
-        <LiveEditor />
-        <LiveError />
-        <LivePreview />
-      </LiveProvider>
+      <Highlight
+        {...defaultProps}
+        code={codeString}
+        language={language}
+        theme={customTheme}
+      >
+        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+          <pre className={className} style={style}>
+            {tokens.map((line, i) => (
+              <div {...getLineProps({ line, key: i })}>
+                {line.map((token, key) => (
+                  <span {...getTokenProps({ token, key })} />
+                ))}
+              </div>
+            ))}
+          </pre>
+        )}
+      </Highlight>
+    );
+  } else {
+    return (
+      <pre>
+        <code>{codeString}</code>
+      </pre>
     );
   }
-  return (
-    <Highlight
-      {...defaultProps}
-      code={codeString}
-      language={language}
-      theme={customTheme}
-    >
-      {({ className, style, tokens, getLineProps, getTokenProps }) => (
-        <pre className={className} style={style}>
-          {tokens.map((line, i) => (
-            <div {...getLineProps({ line, key: i })}>
-              {line.map((token, key) => (
-                <span {...getTokenProps({ token, key })} />
-              ))}
-            </div>
-          ))}
-        </pre>
-      )}
-    </Highlight>
-  );
-};
+}
 
 export default Code;
