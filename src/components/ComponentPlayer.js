@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { darken } from "polished";
+import { darken, transparentize } from "polished";
 
 const IdleComponentContainer = styled.div`
   width: 100%;
@@ -21,15 +21,15 @@ const IdleComponentWrapper = styled.a`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${p => darken(0.1, p.theme.colors.primary)};
-  background-color: ${p => p.theme.colors.primaryXLight};
+  color: ${p => p.theme.colors.bg};
+  background-color: ${p => p.theme.colors.primary};
   box-shadow: 0 0 0 1px ${p => p.theme.colors.primary};
   transition: background-color ${p => p.theme.transitions.normal},
     color ${p => p.theme.transitions.normal};
 
   &:hover {
     color: ${p => p.theme.colors.bg};
-    background-color: ${p => p.theme.colors.primary};
+    background-color: ${p => transparentize(0.2, p.theme.colors.primary)};
   }
 `;
 
