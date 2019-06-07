@@ -72,7 +72,7 @@ const YouTubeWrapper = styled.div`
 `;
 
 const YouTube = p => (
-  <ComponentPlayer url={`https://www.youtube.com/${p.videoId}`}>
+  <ComponentPlayer url={`https://www.youtube.com/watch?v=${p.videoId}`}>
     <YouTubeWrapper>
       <YouTubeContainer>
         <YouTubeStyled {...p} />
