@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "@emotion/styled";
-import { darken, transparentize } from "polished";
+import { transparentize } from "polished";
 
 const IdleComponentContainer = styled.div`
   width: 100%;

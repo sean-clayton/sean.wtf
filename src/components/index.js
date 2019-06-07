@@ -11,8 +11,10 @@ import SpotifyPlayer from "./SpotifyPlayer";
 import Providers from "./Providers";
 import Code from "./Code";
 import ComponentPlayer from "./ComponentPlayer";
+import DankMono from "./DankMono";
 
 export {
+  DankMono,
   ComponentPlayer,
   Providers,
   Article,

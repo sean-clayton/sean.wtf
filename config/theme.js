@@ -23,7 +23,7 @@ const fontSize = {
 };
 
 const fontFamily = {
-  monospace: `"Dank Mono", "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace`
+  monospace: `"dm", "Dank Mono", "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace`
 };
 
 const breakpoints = {

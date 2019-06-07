@@ -1,5 +1,4 @@
 import React from "react";
-import Helmet from "react-helmet";
 import { Global, css } from "@emotion/core";
 import styled from "@emotion/styled";
 import { transparentize, darken } from "polished";
@@ -7,6 +6,7 @@ import SEO from "./SEO";
 import theme from "../../config/theme";
 import useBuildTime from "../hooks/useBuildTime";
 import Providers from "./Providers";
+import dankMono from "./DankMono";
 
 const globalStyle = (
   <Global
@@ -122,7 +122,7 @@ const globalStyle = (
         font-size: 1rem;
       }
       textarea {
-        font-family: ${theme.fontFamily.sansSerif};
+        font-family: ${theme.fontFamily.monospace};
       }
       input,
       textarea {
@@ -232,9 +232,6 @@ const Layout = ({ children, customSEO }) => {
   return (
     <Providers>
       <>
-        <Helmet>
-          <link rel="stylesheet" ref="style" href="/css/dank-mono.css" />
-        </Helmet>
         {!customSEO && <SEO buildTime={buildTime} />}
         {globalStyle}
         {children}
@@ -256,6 +253,7 @@ const Layout = ({ children, customSEO }) => {
           <br />
           <a href="https://github.com/sean-clayton/sean.wtf">GitHub Repo</a>
         </Footer>
+        {dankMono}
       </>
     </Providers>
   );
