@@ -39,7 +39,7 @@ src
 
 This looks fine and dandy, but what happens when we need to debug something wrong with posts? We have to navigate several folders to possibly find the culprit. Also, what happens when we need to add a new feature like adding comments to posts? Let's look at that diff.
 
-```
+```diff
  src
    - Root.js
    - store.js
@@ -86,7 +86,7 @@ src
 
 You'll notice that we have separated our application into their own contexts. This means we no longer just have a concept of a "post" or a "user", but instead we finally have clarity around our business concerns. We now have accounts and a blog—these words didn't exist in our previous structure. Our UI code is also encapsulated by its context (the interface to these business concepts which make our application). Let's add those comments again.
 
-```
+```diff
  src
    - app/
        - Root.js
