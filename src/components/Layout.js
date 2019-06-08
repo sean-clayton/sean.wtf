@@ -219,6 +219,16 @@ const globalStyle = (
   />
 );
 
+const SiteWrapper = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+const ContentWrapper = styled.main`
+  flex: 1;
+`;
+
 const Footer = styled.footer`
   background-color: ${p => p.theme.colors.primary};
   color: ${p => transparentize(0.25, p.theme.colors.bg)};
@@ -239,10 +249,10 @@ const Layout = ({ children, customSEO }) => {
 
   return (
     <Providers>
-      <>
+      <SiteWrapper>
         {!customSEO && <SEO buildTime={buildTime} />}
         {globalStyle}
-        {children}
+        <ContentWrapper>{children}</ContentWrapper>
         <Footer>
           &copy; 2017–{new Date().getFullYear()} by S. P. O. Clayton. All rights
           reserved.
@@ -262,7 +272,7 @@ const Layout = ({ children, customSEO }) => {
           <a href="https://github.com/sean-clayton/sean.wtf">GitHub Repo</a>
         </Footer>
         {dankMono}
-      </>
+      </SiteWrapper>
     </Providers>
   );
 };
