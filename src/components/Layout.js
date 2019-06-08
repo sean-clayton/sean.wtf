@@ -227,6 +227,8 @@ const SiteWrapper = styled.div`
 
 const ContentWrapper = styled.main`
   flex: 1;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Footer = styled.footer`
