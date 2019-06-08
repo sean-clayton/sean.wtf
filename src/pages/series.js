@@ -4,7 +4,7 @@ import { Link, graphql } from "gatsby";
 import styled from "@emotion/styled";
 import _ from "lodash";
 
-import { Layout, Wrapper, Header, SectionTitle } from "../components";
+import { Layout, Wrapper, Header } from "../components";
 import config from "../../config";
 
 const Content = styled.div`

@@ -5,7 +5,6 @@ import styled from "@emotion/styled";
 import kebabCase from "lodash/kebabCase";
 import MDXRenderer from "gatsby-mdx/mdx-renderer";
 import { Layout, Wrapper, Header, Subline, SEO, PrevNext } from "../components";
-import config from "../../config";
 
 const Content = styled.article`
   grid-column: 2;
@@ -114,9 +113,9 @@ const Post = ({
           <PostContent>
             <MDXRenderer>{postNode.code.body}</MDXRenderer>
           </PostContent>
-          <PrevNext prev={prev} next={next} />
         </Content>
       </Wrapper>
+      <PrevNext prev={prev} next={next} />
     </Layout>
   );
 };

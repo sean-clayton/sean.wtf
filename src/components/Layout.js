@@ -136,8 +136,8 @@ const globalStyle = (
         }
       }
       pre {
-        margin-top: 0;
-        margin-bottom: 1rem;
+        margin-block-start: 2rem;
+        margin-block-end: 2rem;
         overflow: auto;
         line-height: 1.58;
         padding: 1rem;
@@ -220,10 +220,17 @@ const globalStyle = (
 );
 
 const Footer = styled.footer`
+  background-color: ${p => p.theme.colors.primary};
+  color: ${p => transparentize(0.25, p.theme.colors.bg)};
   text-align: center;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
+
   span {
     font-size: 0.75rem;
+  }
+
+  a {
+    color: ${p => p.theme.colors.bg};
   }
 `;
 

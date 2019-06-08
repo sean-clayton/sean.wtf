@@ -1,9 +1,8 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
 import styled from "@emotion/styled";
-import config from "../../config";
 
-import { Header, Layout, Wrapper, Article, SectionTitle } from "../components";
+import { Header, Layout, Wrapper, Article } from "../components";
 
 const Content = styled.div`
   grid-column: 2;
