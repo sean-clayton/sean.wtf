@@ -28,13 +28,11 @@ module LinkedList where
 data LinkedList a = Node a (LinkedList a) | Nil
 
 ll_head :: LinkedList a -> a
-ll_head l = case l of
-  Node a _ -> a
+ll_head (Node a _) = a
 
 ll_tail :: LinkedList a -> LinkedList a
 ll_tail Nil = Nil
-ll_tail l = case l of
-  Node _ a -> a
+ll_tail (Node _ a) = a
 
 ll_fold :: b -> (b -> a -> b) -> LinkedList a -> b
 ll_fold acc _ Nil = acc
