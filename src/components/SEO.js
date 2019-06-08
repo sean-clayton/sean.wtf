@@ -16,7 +16,7 @@ const SEO = props => {
 
   if (article) {
     const postMeta = postNode.frontmatter;
-    title = `${postMeta.title} | ${config.siteTitle}`;
+    title = `${postMeta.title} | ${config.siteTitleAlt}`;
     description = postNode.excerpt;
   } else {
     title = config.siteTitleAlt;
@@ -35,7 +35,7 @@ const SEO = props => {
     inLanguage: config.siteLanguage,
     mainEntityOfPage: URL,
     description: config.siteDescription,
-    name: config.siteTitle,
+    name: config.siteTitleAlt,
     author: {
       "@type": "Person",
       name: config.author
