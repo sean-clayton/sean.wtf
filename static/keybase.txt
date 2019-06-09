@@ -1,0 +1,87 @@
+==================================================================
+https://keybase.io/seanclayton
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of https://www.sean.wtf
+  * I am seanclayton (https://keybase.io/seanclayton) on keybase.
+  * I have a public key with fingerprint CDD5 A575 06D6 45B5 6D95  55CA E1EA 1990 5CE6 1EDA
+
+To do so, I am signing this object:
+
+{
+  "body": {
+    "key": {
+      "eldest_kid": "0120887fbe6c5fe9907977e02959f8595ddf647b0830cb189a38693d0f4792c664320a",
+      "fingerprint": "cdd5a57506d645b56d9555cae1ea19905ce61eda",
+      "host": "keybase.io",
+      "key_id": "e1ea19905ce61eda",
+      "kid": "010128e7f7e1290bf9160a42d2b502f158c4f819f1bbda1a351902e91ad869fafaba0a",
+      "uid": "f83e59e8262248f6f5fe33e06577e119",
+      "username": "seanclayton"
+    },
+    "merkle_root": {
+      "ctime": 1560058183,
+      "hash_meta": "bb2712d65818eaa55b13d4f2f7aef5f5746749b6a3abef498c7a42a60ced0e94",
+      "seqno": 5536005
+    },
+    "revoke": {
+      "sig_ids": [
+        "8475e9c0f5587b86554ec3be5919d42d490fa301f785dbaf6914adc02a2a6a6b0f"
+      ]
+    },
+    "service": {
+      "hostname": "www.sean.wtf",
+      "protocol": "https:"
+    },
+    "type": "web_service_binding",
+    "version": 1
+  },
+  "ctime": 1560058188,
+  "expire_in": 157680000,
+  "prev": "4197a84bfcd5351b2081c0d06cfa5638e21e2126ee5875a9e9f48d9973b90493",
+  "seqno": 27,
+  "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+
+owFtU3tsFEUcvkJ5tNwJAYSC0qQr2PBIM7O7sztzgAnUkqqkYC0qtOWY3Z29Hm1v
+r3fbF23BYijgIRRq0SIQirUo+AdajNYHJRABFYnWQuRNDWlBMRB5taFpnW0gJsbN
+Jpud+X7f9/2+30ytZ6hrZEznH5Nqc7oSz8f8eENz5fQ15FYImmWUC94KIZ8NfliB
+wSK2Lz9gCF4BQBFgrJoaU3RkMkKASlSVAZEgYmJEkGGYiqxqAEtA1yAmVMIKkQxg
+yioRdUWRJRFQYZZgBoJ+Fg6FA0Gb0+qGgShSEVAMRUYaUgyCENIpg4xCLoJ0pkBm
+OIV5VsSp4OY0GmEpAYuv8R/foL3/wT/2zZ1jppoqgyIBmkmgAqgsGqKGgGhChHXZ
+xJCYUNMMCqmEIAEiI5Aa3L9JTarRQd/Fg3QmlhgiDIuKKMrYVEyehSQxoCAeBoTE
+AUZYOEgLGUdHGA3qBbTctoJC1SyhkIXzC5gvbFm2k69uBxwURAoACEMs8R5pJM9X
+yGzKizVNVKFoKM4WoxQhDUqGbIqmShmXRaqsqDLRFCpRjZkywbrK+6IK0JkBGJG5
+lQgrClqCFyHJkeAOwqzEymeOeCTg58lFBG+2gI+sklXEiA5MhLCqYQUhmemSxjuF
+xOBZyQSYVALQVDEyNGoqBMrU0IFIuR5VNGAKuVWOXLgkoA/SO8N6FEJpaWmKE0RK
+qW1yT6GwZVu6VcB38mw7FPE6ydjloUEo03yPSHxaIGjwo8IrSlg4EuAJeiFH/jc0
+PEtgZaFAmPkCDgKpCgb8cXRYCaeUIVEpljVTNxCfrcZPMdSBARTdpEiRMBMhf0WF
+Md46ooQRU8YGIaqkESAT6d8URZX7pH5nrAF/kNrFYSZUxW8cIsW6Yka6pkxIiv3p
+zIfFw8+mfV5Yv+SHx9dr2BDnbrni48Y8XhleMnqgtKLfvQfUnHzbPbLqFhgHD4yO
+63y+fvpNd7rrRM/rM8duW70o7t7q4hLZH82/X7N719JNFZ8Fi6J9U5u0i22XTpen
+LjqRc9RumN2Vgm4crlnasHVFkjWqfkPzlqfc8Piud5R18+dmT+4572m1Ojw38zu3
++luKkrdkX61qyXj5u5UfrHxw83240nut8s8knLR3fdovXbm/khVJy9NeG3qorn12
+W19CbNkXZXnbG8+tja8+XLKnp+eJb3tdn6bPeeGk3L1/4ZOxMy5bC6cnT2x2/9xS
+lHgptPx06mXDMyx9XHVw4tJXcOLmyoSauG297XerjTWB0DdlI4r+up3bNOWQb1Xb
+siVzxPvndn+/IzTDfw5KRR2No7uKZ36V+V7/pisZ6clTL8Z2XTtg41Pi9fDc454E
+Y1Q3TXjx3f37bsQ0RcUHtz5Kz7InX7ib1Lbg6aoJ/dMWs7Zr0f2Ho9HKTLmwel9s
+9RsNa3fW16W+OdAwc1rcOvfZ09uzmpd93Zfx7H1QEB2fdXv+wXW9aS/5V7iPdXa8
+ui35Shiubk+srtvhWzYCTnrQavUfbfxtoCm98mHWsfXzBkp3flk30HPH98zGxWeS
+o/3zEjdk4AnxY642Z95pqfn94VbyXGPq3+CtU2vuZXbT2k9yXGuObHB7POPlhPry
+Q0di1rZ2+LObDi5oP7Vg896xIx4Gelv9FxZ2b//4eus/
+=DD3n
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/seanclayton
+
+==================================================================
+
