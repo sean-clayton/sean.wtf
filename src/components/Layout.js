@@ -154,6 +154,10 @@ const globalStyle = (
         background-color: ${transparentize(0.9, theme.colors.primary)};
         color: ${darken(0.1, theme.colors.primary)};
       }
+      pre,
+      code {
+        font-family: ${theme.fontFamily.monospace};
+      }
       figure {
         margin: 0 0 1rem 0;
       }
