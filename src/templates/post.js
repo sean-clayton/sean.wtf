@@ -12,7 +12,12 @@ const Content = styled.article`
   @media (max-width: ${props => props.theme.breakpoints.phone}) {
     padding-top: 2rem;
   }
-  p {
+  p,
+  ul,
+  ol,
+  code,
+  pre code,
+  .prism-code .token-line {
     font-size: 1.1rem;
     line-height: 1.58;
     --baseline-multiplier: 0.179;

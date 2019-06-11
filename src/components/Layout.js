@@ -97,14 +97,6 @@ const globalStyle = (
         font-style: italic;
         position: relative;
       }
-      ul,
-      ol {
-        font-size: 1.1rem;
-        li {
-          line-height: 1.58;
-          font-size: inherit;
-        }
-      }
       blockquote:before {
         content: "";
         position: absolute;
