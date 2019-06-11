@@ -69,7 +69,9 @@ const customTheme = {
         "unit",
         "statement",
         "regex",
-        "at-rule"
+        "at-rule",
+        "constant",
+        "constructor"
       ],
       style: {
         fontWeight: "bold"
