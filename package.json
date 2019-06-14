@@ -43,7 +43,7 @@
     "start": "gatsby develop -o",
     "develop": "gatsby develop",
     "serve": "gatsby serve",
-    "format": "prettier --write '{./*.{html,mdx,md,js,json}, {src,blog,config}/**/*.{html,mdx,md,js,json}}'"
+    "format": "prettier --write '{.,src,blog,config}{*,/**/*}.{html,mdx,md,js,json}' --ignore-path .gitignore"
   },
   "devDependencies": {
     "prettier": "^1.18.2"
