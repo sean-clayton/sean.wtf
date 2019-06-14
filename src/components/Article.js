@@ -2,15 +2,14 @@ import React from "react";
 import styled from "@emotion/styled";
 import { Link } from "gatsby";
 import kebabCase from "lodash/kebabCase";
-import { transparentize } from "polished";
 
 import Subline from "./Subline";
 
 const Post = styled.article`
   display: flex;
   flex-direction: column;
-  margin-block-start: 2rem;
-  margin-block-end: 2rem;
+  margin-block-start: 1rem;
+  margin-block-end: 1rem;
 
   @media (max-width: ${props => props.theme.breakpoints.phone}) {
     margin-block-start: 1rem;
@@ -21,19 +20,7 @@ const Post = styled.article`
 const Title = styled.h2`
   font-size: 1.1em;
   position: relative;
-  margin-bottom: 1em;
-  padding-bottom: 1em;
-  border-bottom: 2px dotted
-    ${p => transparentize(0.666, p.theme.colors.primary)};
-  &:after {
-    content: "";
-    position: absolute;
-    bottom: 2px;
-    display: block;
-    width: 100%;
-    border-bottom: 2px dotted
-      ${p => transparentize(0.666, p.theme.colors.primary)};
-  }
+
   a {
     color: ${props => props.theme.colors.grey.dark};
     &:hover {
