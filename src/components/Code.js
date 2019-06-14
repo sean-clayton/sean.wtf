@@ -1,29 +1,63 @@
 import React, { useState, useEffect } from "react";
+import _ from "lodash";
+import Prism from "prismjs";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import theme from "../../config/theme";
 
+(typeof global !== "undefined" ? global : window).Prism = Prism;
+
+_.each(
+  [
+    "ocaml",
+    "reason",
+    "fsharp",
+    "coffeescript",
+    "diff",
+    "javascript",
+    "typescript",
+    "haskell",
+    "elixir",
+    "css",
+    "scss",
+    "rust",
+    "elm",
+    "swift",
+    "markdown",
+    "sql",
+    "jsx",
+    "tsx"
+  ],
+  l => {
+    require(`prismjs/components/prism-${l}`);
+  }
+);
+
 const customTheme = {
   plain: {
-    backgroundColor: theme.colors.backgroundColor
+    backgroundColor: theme.colors.backgroundColor,
+    color: theme.colors.text
   },
   styles: [
     {
-      types: ["atom"],
+      types: ["operator", "string", "keyword", "boolean"],
       style: {
-        fontWeight: "bold"
+        color: theme.colors.primaryDark
+      }
+    },
+    {
+      types: ["attr-name"],
+      style: {
+        color: theme.colors.primary
       }
     },
     {
       types: ["prolog", "doctype", "cdata", "punctuation"],
-      style: {
-        opacity: 0.7
-      }
+      style: {}
     },
     {
       types: ["comment"],
       style: {
-        opacity: 0.7,
         color: theme.colors.bg,
         backgroundColor: theme.colors.primary,
         fontWeight: "bold",
@@ -32,21 +66,16 @@ const customTheme = {
     },
     {
       types: ["namespace"],
-      style: {
-        opacity: 0.7
-      }
+      style: {}
     },
     {
       types: ["tag", "operator", "number"],
-      style: {
-        opacity: 0.7
-      }
+      style: {}
     },
     {
       types: ["property", "function"],
       style: {
-        fontWeight: "bold",
-        opacity: 0.7
+        fontWeight: "bold"
       }
     },
     {
@@ -81,12 +110,6 @@ const customTheme = {
       types: ["placeholder", "variable", "builtin", "keyword"],
       style: {
         fontStyle: "italic"
-      }
-    },
-    {
-      types: ["keyword"],
-      style: {
-        opacity: 0.7
       }
     },
     {
@@ -139,6 +162,7 @@ function Code({ codeString, language, ...props }) {
     return (
       <Highlight
         {...defaultProps}
+        Prism={Prism}
         code={codeString}
         language={language}
         theme={customTheme}

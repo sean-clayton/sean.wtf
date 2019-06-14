@@ -1,8 +1,10 @@
-import { lighten, transparentize } from "polished";
+import { lighten, transparentize, darken } from "polished";
 
 const colors = {
   primary: "#0077ff",
   primaryLight: lighten(0.1, "#0077ff"),
+  primaryDark: darken(0.05, "#0077ff"),
+  primaryXDark: darken(0.3, "#0077ff"),
   primaryXLight: transparentize(0.95, "#0077ff"),
   bg: "#fff",
   grey: {
@@ -11,7 +13,9 @@ const colors = {
     light: "rgba(0, 0, 0, 0.5)",
     ultraLight: "rgba(0, 0, 0, 0.25)"
   },
-  white: "white"
+  white: "white",
+  black: "black",
+  text: "#333"
 };
 
 const transitions = {

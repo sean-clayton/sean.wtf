@@ -18,7 +18,7 @@ series:
 
 The `map` method is purpose-built for creating a **new array** from an array. For example:
 
-```ts
+```tsx
 const arr1 = [1, 2, 3, 4];
 const arr2 = arr1.map(x => x * 2);
 
@@ -27,7 +27,7 @@ console.log(arr2); // [2, 4, 6, 8]
 
 This is fine and dandy, but in the real world we’re probably working with arrays of objects. Let’s say we have an array of friend objects that each have a name (string) and age (number). We want to just get an array of ages back. Map to the rescue!
 
-```ts
+```tsx
 const friends = [
   { name: "Sean", age: 23 },
   { name: "Bob the Builder", age: 23 }
@@ -38,7 +38,7 @@ const ages = friends.map(friend => friend.age); // [23, 23]
 
 We can even use it with [React.js](https://facebook.github.io/react)!
 
-```ts
+```tsx
 const FriendList = () => (
   <ul>
     {friends.map((friend, i) => (
@@ -58,7 +58,7 @@ Map is a really neat way with taking an array of items and returning a new array
 
 The `reduce` array method is for creating a **new thing** from an array. If you have an array of objects and it should return a single number, `Array.prototype.reduce` is a tool for the job. Let’s use the `ages` array we mentioned in the Map example above:
 
-```ts
+```tsx
 const sumAges = ages.reduce(
   (accumulator, currentValue) => accumulator + currentValue,
   0
@@ -69,7 +69,7 @@ Let’s break this down.
 
 The `reduce` method takes _two_ arguments: A callback function to perform actions on the array and return a value, and an initial value (very important). Here’s the previous code refactored to be more obvious what piece is what:
 
-```ts
+```tsx
 const callback = (accumulator, currentValue, _indexOfCurrent, _array) =>
   accumulator + currentValue;
 const initialValue = 0;
@@ -85,7 +85,7 @@ You can see the callback function being passed a few values. It is important to 
 
 I can hear you asking now: “Well Sean, what is the first value for `accumulator`?” I’m glad you asked, observant person. Before we mentioned the `initialValue` argument, and that does _exactly_ this. Let’s look again at the `sumAges` code from above:
 
-```js
+```tsx
 const callback = (accumulator, currentValue, _indexOfCurrent, _array) =>
   accumulator + currentValue;
 const initialValue = 0;
@@ -94,7 +94,7 @@ const sumAges = ages.reduce(callback, initialValue);
 
 You notice that we made initial value `0`. If we didn’t do that, `initialValue` would be `undefined`. So when we look at the callback function, we can see a problem:
 
-```js
+```tsx
 (accumulator, currentValue, _indexOfCurrent, _array) => {
   // accumulator = undefined at this point!
   return accumulator + currentValue; // undefined + 23 = NaN
@@ -107,7 +107,7 @@ You notice that we made initial value `0`. If we didn’t do that, `initialValue
 
 Let's say we're working with an array of objects that looks like this type definition:
 
-```ts
+```tsx
 type PriceObject {
     subTotal: number,
     tax: number,
@@ -120,7 +120,7 @@ Let's work with an array of these `PriceObject`s to simulate a shopping cart of 
 
 Here's what we want at the end of the day:
 
-```ts
+```tsx
 type ShoppingCart = PriceObject[];
 
 const shoppingCart: ShoppingCart = [
@@ -146,7 +146,7 @@ const shoppingCartCombined = {
 
 Now that we know what we want (a combined shopping cart object combining the parameters), we can solve it with reduce!
 
-```ts
+```tsx
 const initialPriceObject: PriceObject = {
   subTotal: 0,
   tax: 0,
