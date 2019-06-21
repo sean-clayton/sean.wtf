@@ -27,24 +27,24 @@ module LinkedList where
 
 data LinkedList a = Node a (LinkedList a) | Nil
 
-ll_head :: LinkedList a -> a
-ll_head (Node a _) = a
+llHead :: LinkedList a -> a
+llHead (Node a _) = a
 
-ll_tail :: LinkedList a -> LinkedList a
-ll_tail Nil = Nil
-ll_tail (Node _ a) = a
+llTail :: LinkedList a -> LinkedList a
+llTail Nil = Nil
+llTail (Node _ a) = a
 
-ll_fold :: b -> (b -> a -> b) -> LinkedList a -> b
-ll_fold acc _ Nil = acc
-ll_fold acc f (Node x xs) = ll_fold (f acc x) f xs
+llFold :: b -> (b -> a -> b) -> LinkedList a -> b
+llFold acc _ Nil = acc
+llFold acc f (Node x xs) = llFold (f acc x) f xs
 
-ll_map :: (a -> b) -> LinkedList a -> LinkedList b
-ll_map f Nil = Nil
-ll_map f (Node x xs) = Node (f x) (ll_map f xs)
+llMap :: (a -> b) -> LinkedList a -> LinkedList b
+llMap f Nil = Nil
+llMap f (Node x xs) = Node (f x) (llMap f xs)
 
-ll_length :: LinkedList a -> Int
-ll_length Nil = 0
-ll_length xs = ll_fold 0 (\a _ -> succ a) xs
+llLength :: LinkedList a -> Int
+llLength Nil = 0
+llLength xs = llFold 0 (\a _ -> succ a) xs
 ```
 
 ### ReasonML
@@ -108,7 +108,7 @@ module LinkedList =
       | Nil -> Nil
       | Node (x, xs) -> Node ((f x), (map f xs))
 
-    let length = fold (fun a _ -> a + 1) 0
+    let length = fold 0 (fun a _ -> a + 1)
   end
 ```
 
@@ -148,6 +148,37 @@ defmodule LinkedList do
     %LinkedList{value: fun.(value), nex: map(next, fun)}
   end
 end
+```
+
+### F&#35;
+
+```fsharp
+module LinkedList =
+    type LinkedList<'a> =
+    | Nil
+    | Node of 'a * LinkedList<'a>
+
+    let head =
+        function
+        | Nil -> Nil
+        | Node(x, _) -> x
+
+    let tail =
+        function
+        | Nil -> Nil
+        | Node(_, xs) -> xs
+
+    let rec fold acc f l =
+        match l with
+        | Nil -> acc
+        | Node(x, xs) -> fold (f acc x) f xs
+
+    let rec map f l =
+        match l with
+        | Nil -> Nil
+        | Node(x, xs) -> Node((f x), (map f xs))
+
+    let length l = fold 0 (fun a _ -> a + 1) l
 ```
 
 Language features like currying, pattern matching, and type-safety are super nice when doing exercises like this.
