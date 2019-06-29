@@ -26,7 +26,8 @@ _.each(
     "markdown",
     "sql",
     "jsx",
-    "tsx"
+    "tsx",
+    "livescript"
   ],
   l => {
     require(`prismjs/components/prism-${l}`);
