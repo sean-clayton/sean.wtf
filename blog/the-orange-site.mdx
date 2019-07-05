@@ -1,0 +1,56 @@
+---
+title: The Orange Site
+date: 2019-07-05
+series:
+  - thoughts
+---
+
+Many people in tech know of the Orange Site[^1].
+
+It can be a very good source of news, without a doubt.
+But it can have an ugly side—Namely, the comment section.
+
+Today I was reading a link from the site.
+It was a link to a paper[^2] with the following link title: "Migrating to GraphQL: A Practical Assessment"
+
+At the time of writing this it has 117 points and 69 comments.
+
+Here is the abstract:
+
+> GraphQL is a novel query language proposed by Facebook to implement Web-based APIs.
+> In this paper, we present a practical study on migrating API clients to this new technology.
+> First, we conduct a grey literature review to gain an in-depth understanding on the benefits and key characteristics normally associated to GraphQL by practitioners.
+> After that, we assess such benefits in practice, by migrating seven systems to use GraphQL, instead of standard REST-based APIs.
+> As our key result, we show that GraphQL can reduce the size of the JSON documents returned by REST APIs in 94% (in number of fields)and in 99% (in number of bytes), both median results.
+
+I'm not going to go into the rest of the paper,
+but instead I am going to present the most prominently displayed comment on the discussion (the first comment visible when looking at the discussion).
+
+**Originally posted by [desc](https://news.ycombinator.com/user?id=desc)**
+
+> I can see absolutely no positive value whatsoever in GraphQL for internal APIs. You're basically saying 'please, formulate any query you like, and I will waste years of my life trying to optimise that general case'.
+> Seriously. For internal stuff you want to be as specific as humanly possible. You want to optimise the living fuck out of that hot path thousand-times-a-second query, and build an entirely separate service to handle that particular URL if necessary.
+>
+> For a public API, why would you ever encourage submission of arbitrary queries? They will destroy your database servers.
+>
+> Note that SQL vs. NoSQL is not even a competition here. An RDBMS can handle arbitrary queries much better than any brute-force map-reduce system, and doesn't require spending thousands of man-hours writing your own query planner. The difference is that it doesn't (always) automatically scale horizontally.
+>
+> So from where I'm sitting, GraphQL is nothing more than an invitation to maintenance and performance headaches, predicated on the idea that everyone scales infinitely horizontally and can brute-force every query.
+>
+> Personally I prefer being able to serve a thousand queries a second from a single server managing a 1TB database with a 50GB working set, with a latency under a second even when (looking at the raw query) it 'should' touch more rows than there are atoms in the universe.
+>
+> [edit] In light of the replies, I should express some surprise that building REST endpoints is expensive. If you can execute at runtime an automatic combination of various other endpoints to produce a result, is it not equally simple to generate the code necessary to do the same? That can at least be examined and maintained more easily than dealing with the massive array of possible varations to known-working queries which comes with modifying the rules driving the GraphQL evaluator...?
+
+It's a complete straw man argument which has almost zero to do with the subject matter other than the fact that they both mention GraphQL.
+Nowhere in the paper is there a claim of GraphQL as a benefit to internal APIs.
+This person just wants to yell about something related to GraphQL.
+
+Comments like these make it hard to see much value in the discussion of the site.
+I can see where people like this come from, I just cannot see how they feel their opinion furthers discussion on the subject matter, even if it is off-topic.
+
+Anyway, I've been wanting to rant about Hacker News for a while.
+I could have made a reply to the person, but I didn't want to derail anything.
+I have a space on the internet where I can type whatever I want and I choose to use this platform instead of sticking my ugly opinions in front of other people.
+
+[^1]: https://news.ycombinator.com
+[^2]: https://arxiv.org/pdf/1906.07535.pdf
