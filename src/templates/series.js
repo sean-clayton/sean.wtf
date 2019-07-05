@@ -34,6 +34,7 @@ const series = ({ pageContext: { series }, data: { allMdx } }) => {
           {nodes.map(post => (
             <Article
               title={post.frontmatter.title}
+              link={post.frontmatter.link}
               date={post.frontmatter.date}
               excerpt={post.excerpt}
               timeToRead={post.timeToRead}
@@ -60,6 +61,7 @@ export const postQuery = graphql`
       nodes {
         frontmatter {
           title
+          link
           date(formatString: "MM/DD/YYYY")
           series
         }

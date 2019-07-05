@@ -25,6 +25,7 @@ const IndexPage = ({
         {posts.map(post => (
           <Article
             title={post.frontmatter.title}
+            link={post.frontmatter.link}
             date={post.frontmatter.date}
             excerpt={post.excerpt}
             timeToRead={post.timeToRead}
@@ -49,6 +50,7 @@ export const IndexQuery = graphql`
         }
         frontmatter {
           title
+          link
           date(formatString: "MM/DD/YYYY")
           series
         }

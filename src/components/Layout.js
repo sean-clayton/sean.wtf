@@ -63,7 +63,8 @@ const globalStyle = (
       a {
         color: ${theme.colors.primary};
         text-decoration: none;
-        transition: color ${theme.transitions.normal};
+        transition: color ${theme.transitions.normal},
+          background-color ${theme.transitions.normal};
       }
       a:hover {
         color: ${theme.colors.primaryLight};

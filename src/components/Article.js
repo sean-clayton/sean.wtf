@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Link } from "gatsby";
+import Link from "./Link";
 import kebabCase from "lodash/kebabCase";
+import { get } from "lodash/fp";
 
 import Subline from "./Subline";
 
@@ -23,8 +24,10 @@ const Title = styled.h2`
 
   a {
     color: ${props => props.theme.colors.grey.dark};
+    border-bottom: 4px solid ${get("theme.colors.primary")};
     &:hover {
-      color: ${props => props.theme.colors.primaryLight};
+      background-color: ${get("theme.colors.primary")};
+      color: ${get("theme.colors.bg")};
     }
   }
 `;
@@ -35,14 +38,14 @@ const Excerpt = styled.p`
   margin-bottom: 1rem;
 `;
 
-function Article({ title, date, description, slug, timeToRead, series }) {
+function Article({ title, date, description, slug, timeToRead, series, link }) {
   return (
     <Post>
       <Title>
-        <Link to={`/${slug}`}>{title}</Link>
+        <Link to={link || `/${slug}`}>{title}</Link>
       </Title>
       <Subline>
-        {timeToRead} Min Read &mdash;{" "}
+        <Link to={`/${slug}`}>{timeToRead} Min Read &mdash;</Link>{" "}
         {(series || []).map((cat, i) => (
           <React.Fragment key={cat}>
             {"#"}
