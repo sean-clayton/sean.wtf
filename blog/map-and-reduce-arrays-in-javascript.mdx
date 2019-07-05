@@ -38,7 +38,7 @@ const ages = friends.map(friend => friend.age); // [23, 23]
 
 We can even use it with [React.js](https://facebook.github.io/react)!
 
-```tsx
+```tsx {3-7,9}
 const FriendList = () => (
   <ul>
     {friends.map((friend, i) => (

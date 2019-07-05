@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
+import styled from "@emotion/styled";
 import _ from "lodash";
 import Prism from "prismjs";
 import Highlight, { defaultProps } from "prism-react-renderer";
 import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
 import theme from "../../config/theme";
+import { transparentize } from "polished";
 
 (typeof global !== "undefined" ? global : window).Prism = Prism;
 
@@ -33,6 +35,32 @@ _.each(
     require(`prismjs/components/prism-${l}`);
   }
 );
+
+const Wrapper = styled.div`
+  overflow: auto;
+  background-color: ${theme.colors.primaryXLight};
+  box-shadow: 0 0 0 1px ${theme.colors.primary};
+  overflow-x: auto;
+`;
+
+const Pre = styled.pre`
+  float: left;
+  overflow: initial;
+`;
+
+const LineNumber = styled.span`
+  display: inline-block;
+  width: 2em;
+  user-select: none;
+  color: ${p => transparentize(0.6, p.theme.colors.primary)};
+  font-size: 1.1rem;
+  line-height: 1.58;
+  --baseline-multiplier: 0.179;
+  --x-height-multiplier: 0.35;
+  @media (max-width: ${props => props.theme.breakpoints.phone}) {
+    font-size: 1rem;
+  }
+`;
 
 const customTheme = {
   plain: {
@@ -144,7 +172,26 @@ const customTheme = {
   ]
 };
 
-function Code({ codeString, language, ...props }) {
+const RE = /{([\d,-]+)}/;
+
+function calculateLinesToHighlight(meta) {
+  if (RE.test(meta)) {
+    const lineNumbers = RE.exec(meta)[1]
+      .split(",")
+      .map(v => v.split("-").map(y => parseInt(y, 10)));
+    return index => {
+      const lineNumber = index + 1;
+      const inRange = lineNumbers.some(([start, end]) =>
+        end ? lineNumber >= start && lineNumber <= end : lineNumber === start
+      );
+      return inRange;
+    };
+  } else {
+    return () => false;
+  }
+}
+
+function Code({ codeString, language, metastring, ...props }) {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     setLoaded(true);
@@ -160,6 +207,7 @@ function Code({ codeString, language, ...props }) {
         </LiveProvider>
       );
     }
+    const shouldHighlightLine = calculateLinesToHighlight(metastring);
     return (
       <Highlight
         {...defaultProps}
@@ -169,23 +217,35 @@ function Code({ codeString, language, ...props }) {
         theme={customTheme}
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
-          <pre className={className} style={style}>
-            {tokens.map((line, i) => (
-              <div {...getLineProps({ line, key: i })}>
-                {line.map((token, key) => (
-                  <span {...getTokenProps({ token, key })} />
-                ))}
-              </div>
-            ))}
-          </pre>
+          <Wrapper>
+            <Pre className={className} style={style}>
+              {tokens.map((line, i) => (
+                <div
+                  key={i}
+                  {...getLineProps({
+                    line,
+                    key: i,
+                    className: shouldHighlightLine(i) ? "highlight-line" : ""
+                  })}
+                >
+                  <LineNumber>{i + 1}</LineNumber>
+                  {line.map((token, key) => (
+                    <span key={key} {...getTokenProps({ token, key })} />
+                  ))}
+                </div>
+              ))}
+            </Pre>
+          </Wrapper>
         )}
       </Highlight>
     );
   } else {
     return (
-      <pre>
-        <code>{codeString}</code>
-      </pre>
+      <Wrapper>
+        <Pre>
+          <code>{codeString}</code>
+        </Pre>
+      </Wrapper>
     );
   }
 }

@@ -127,24 +127,18 @@ const globalStyle = (
           outline: none;
         }
       }
-      pre {
-        margin-block-start: 2rem;
-        margin-block-end: 2rem;
-        overflow: auto;
-        line-height: 1.58;
-        padding: 1rem;
-        background-color: ${theme.colors.primaryXLight};
-        box-shadow: 0 0 0 1px ${theme.colors.primary};
-        color: ${darken(0.1, theme.colors.primary)};
-
-        code {
-          background-color: transparent;
-          padding: 0;
-        }
-      }
-      code {
+      p code {
         background-color: ${transparentize(0.9, theme.colors.primary)};
         color: ${darken(0.1, theme.colors.primary)};
+      }
+      .highlight-line {
+        background-color: ${transparentize(0.9, theme.colors.primary)};
+        margin: 0 -10px;
+        padding: 0 5px;
+        border-left: 5px solid ${theme.colors.primary};
+      }
+      pre {
+        padding: 0 10px;
       }
       pre,
       code {
