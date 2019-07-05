@@ -1,5 +1,6 @@
 import React from "react";
-import { Link, graphql } from "gatsby";
+import { graphql } from "gatsby";
+import Link from "../components/Link";
 import { transparentize } from "polished";
 import styled from "@emotion/styled";
 import kebabCase from "lodash/kebabCase";
@@ -104,7 +105,7 @@ const Post = ({
         <Header />
         <Content>
           <Title>
-            <Link to={`/${slug}`}>{post.title}</Link>
+            <Link to={post.link || `/${slug}`}>{post.title}</Link>
           </Title>
           <Subline>
             {post.date} &mdash; {postNode.timeToRead} Min Read &mdash;{" "}
@@ -136,6 +137,7 @@ export const postQuery = graphql`
       excerpt
       frontmatter {
         title
+        link
         date(formatString: "MM/DD/YYYY")
         series
       }
