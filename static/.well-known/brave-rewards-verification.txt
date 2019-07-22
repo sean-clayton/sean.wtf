@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: sean.wtf
+Token: 48bb3a27830489fce3b3e34716e13ea72b72e8353e8cf77bac219900a88df122
