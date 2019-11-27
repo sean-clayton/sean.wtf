@@ -6,7 +6,6 @@ import SEO from "./SEO";
 import theme from "../../config/theme";
 import useBuildTime from "../hooks/useBuildTime";
 import Providers from "./Providers";
-import dankMono from "./DankMono";
 
 const globalStyle = (
   <Global
@@ -26,8 +25,11 @@ const globalStyle = (
         background: ${theme.colors.primary};
       }
       html {
-        font-family: ${theme.fontFamily.monospace};
+        font-family: ${theme.fontFamily.serif};
         font-size: ${theme.baseFontSize};
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: auto;
+        font-smooth: auto;
         h1 {
           font-size: 2em;
         }
@@ -88,7 +90,7 @@ const globalStyle = (
       h5,
       h6 {
         color: ${theme.colors.grey.dark};
-        font-family: ${theme.fontFamily.monospace};
+        font-family: ${theme.fontFamily.serif};
       }
       hr {
         border: none;
@@ -264,7 +266,6 @@ const Layout = ({ children, customSEO }) => {
           <br />
           <a href="https://github.com/sean-clayton/sean.wtf">GitHub Repo</a>
         </Footer>
-        {dankMono}
       </SiteWrapper>
     </Providers>
   );

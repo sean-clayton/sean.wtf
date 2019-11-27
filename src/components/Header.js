@@ -6,7 +6,7 @@ import config from "../../config";
 
 const Wrapper = styled.header`
   background-color: ${props => transparentize(0.9, props.theme.colors.primary)};
-  border-bottom: 2px dotted ${p => transparentize(0.4, p.theme.colors.primary)};
+  border-bottom: 1px solid ${p => transparentize(0.75, p.theme.colors.primary)};
   grid-column: 1 / -1;
   margin-left: -1rem;
   margin-right: -1rem;
@@ -27,8 +27,7 @@ const Content = styled.div`
     font-size: 1.5em;
     padding: 1rem;
     &:hover {
-      color: ${props =>
-        transparentize(0.15, darken(0.3, props.theme.colors.primary))};
+      color: ${props => transparentize(0.15, darken(0.3, props.theme.colors.primary))};
     }
   }
 `;

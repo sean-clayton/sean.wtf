@@ -1,9 +1,6 @@
 import React from "react";
 import { Link as GLink } from "gatsby";
-
-function isExternal(url) {
-  return /^(https?|mailto):\/\//.test(url);
-}
+import { isExternal } from '../utils'
 
 function Link(props) {
   if (isExternal(props.to)) {

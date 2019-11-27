@@ -46,7 +46,7 @@ function Article({ title, date, description, slug, timeToRead, series, link }) {
       </Title>
       <Subline>
         <Link to={`/${slug}`}>{timeToRead} Min Read &mdash;</Link>{" "}
-        {(series || []).map((cat, i) => (
+        {(series || []).map(cat => (
           <React.Fragment key={cat}>
             {"#"}
             <Link to={`/series/${kebabCase(cat)}`}>{cat}</Link>{" "}

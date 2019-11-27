@@ -27,7 +27,8 @@ const fontSize = {
 };
 
 const fontFamily = {
-  monospace: `"dm", "Dank Mono", "Fira Code", Monaco, Consolas, "Ubuntu Mono", monospace`
+  serif: `"Georgia", serif`,
+  monospace: `SFMono-Regular, Menlo, Monaco, "Cascadia Code", Consolas, "Liberation Mono", "Courier New", monospace`
 };
 
 const breakpoints = {
