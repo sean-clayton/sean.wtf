@@ -4,7 +4,7 @@ import Link from "../components/Link";
 import { transparentize } from "polished";
 import styled from "@emotion/styled";
 import kebabCase from "lodash/kebabCase";
-import MDXRenderer from "gatsby-mdx/mdx-renderer";
+import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import { Layout, Wrapper, Header, Subline, SEO, PrevNext } from "../components";
 
 const Content = styled.article`
@@ -117,7 +117,7 @@ const Post = ({
             ))}
           </Subline>
           <PostContent>
-            <MDXRenderer>{postNode.code.body}</MDXRenderer>
+            <MDXRenderer>{postNode.body}</MDXRenderer>
           </PostContent>
         </Content>
       </Wrapper>
@@ -131,9 +131,7 @@ export default Post;
 export const postQuery = graphql`
   query postBySlug($slug: String!) {
     mdx(fields: { slug: { eq: $slug } }) {
-      code {
-        body
-      }
+      body
       excerpt
       frontmatter {
         title
