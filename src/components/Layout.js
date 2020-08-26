@@ -225,8 +225,8 @@ const ContentWrapper = styled.main`
 `;
 
 const Footer = styled.footer`
-  background-color: ${p => p.theme.colors.primary};
-  color: ${p => transparentize(0.25, p.theme.colors.bg)};
+  background-color: ${(p) => p.theme.colors.primary};
+  color: ${(p) => transparentize(0.25, p.theme.colors.bg)};
   text-align: center;
   padding: 2rem 1rem;
 
@@ -235,7 +235,7 @@ const Footer = styled.footer`
   }
 
   a {
-    color: ${p => p.theme.colors.bg};
+    color: ${(p) => p.theme.colors.bg};
   }
 `;
 
@@ -249,22 +249,19 @@ const Layout = ({ children, customSEO }) => {
         {globalStyle}
         <ContentWrapper>{children}</ContentWrapper>
         <Footer>
-          &copy; 2017–{new Date().getFullYear()} by S. P. O. Clayton. All rights
-          reserved.
-          <br />
           All writings on this site by Sean Clayton are available under the{" "}
           <a
             target="_blank"
             rel="noopener noreferrer"
-            href="https://creativecommons.org/licenses/by-sa/4.0/"
+            href="https://creativecommons.org/publicdomain/zero/1.0/"
           >
-            CC BY-SA 4.0
+            CC0
           </a>{" "}
           license.
           <br />
-          <a href="/cc-by-sa-4.0.txt">You can view the license here.</a>
+          <a href="/cc0.txt">You can view the license here.</a>
           <br />
-          <a href="https://github.com/sean-clayton/sean.wtf">GitHub Repo</a>
+          <a href="https://github.com/sean-clayton/sean.wtf">Git Repo</a>
         </Footer>
       </SiteWrapper>
     </Providers>
@@ -274,5 +271,5 @@ const Layout = ({ children, customSEO }) => {
 export default Layout;
 
 Layout.defaultProps = {
-  customSEO: false
+  customSEO: false,
 };

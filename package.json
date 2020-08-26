@@ -37,7 +37,7 @@
     "react-youtube": "^7.9.0"
   },
   "keywords": [],
-  "license": "ISC",
+  "license": "0BSD",
   "main": "n/a",
   "scripts": {
     "build": "gatsby build",
