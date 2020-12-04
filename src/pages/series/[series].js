@@ -41,7 +41,6 @@ export async function getStaticPaths(...args) {
 }
 
 export async function getStaticProps({ params: { series } }) {
-  console.log(series);
   const contentRoot = path.join(root, "content");
   const postData = _.filter(
     _.reverse(_.sortBy(
