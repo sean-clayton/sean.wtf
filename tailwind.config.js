@@ -16,6 +16,15 @@ module.exports = {
             },
           },
         },
+        lg: {
+          css: {
+            pre: {
+              padding: 0,
+              backgroundColor: "transparent",
+              color: "currentColor",
+            },
+          },
+        },
       },
       colors: {
         code: {
