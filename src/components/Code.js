@@ -133,24 +133,6 @@ function Pre(p) {
   return <pre {...p} />;
 }
 
-function LineNumbers(p) {
-  return <span className="inline-block w-6 select-none" {...p} />;
-}
-
-const tokenClassNames = {
-  tag: "text-code-red",
-  "attr-name": "text-code-yellow",
-  "attr-value": "text-code-green",
-  deleted: "text-code-red",
-  inserted: "text-code-green",
-  punctuation: "text-code-white",
-  keyword: "text-code-purple",
-  string: "text-code-green",
-  function: "text-code-blue",
-  boolean: "text-code-red",
-  comment: "text-gray-400 italic",
-};
-
 export default function Code({ codeString, language, metastring, ...props }) {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
@@ -179,19 +161,14 @@ export default function Code({ codeString, language, metastring, ...props }) {
                     className: shouldHighlightLine(i) ? "highlight-line" : "",
                   })}
                 >
-                  <LineNumbers>{i + 1}</LineNumbers>
                   {line.map((token, key) => {
-                    const { className, ...tokenProps } = getTokenProps(
+                    const tokenProps = getTokenProps(
                       { token, key },
                     );
-                    const [tok, type] = className.split(" ");
-                    const newClassName = tok === "token"
-                      ? tokenClassNames[type]
-                      : "";
+
                     return <span
                       key={key}
                       {...tokenProps}
-                      className={newClassName}
                     />;
                   })}
                 </div>

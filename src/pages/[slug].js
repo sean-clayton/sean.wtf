@@ -45,13 +45,13 @@ const components = {
     // if there's a codeString and some props, we passed the test
     if (props) {
       return <Code
-        className={`${className} rounded-md bg-gray-800 py-3 px-4 overflow-x-auto`}
+        className={`${className} overflow-x-auto`}
         {...props}
       />;
     } else {
       // it's possible to have a pre without a code in it
       return <pre
-        className={`${className} rounded-md bg-gray-800 py-3 px-4 overflow-x-auto`}
+        className={`${className} overflow-x-auto`}
         {...preProps}
       />;
     }

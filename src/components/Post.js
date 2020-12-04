@@ -34,7 +34,7 @@ export default function Post({ post, content }) {
               </Link>
             )}
           </div>
-          <article className="prose prose-yellow">
+          <article className="prose md:prose-lg prose-yellow">
             {post.frontMatter.link
               ? <div>
                 Re: <a

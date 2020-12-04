@@ -6,6 +6,17 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
+      typography: {
+        DEFAULT: {
+          css: {
+            pre: {
+              padding: 0,
+              backgroundColor: "transparent",
+              color: "currentColor",
+            },
+          },
+        },
+      },
       colors: {
         code: {
           green: "#b5f4a5",
