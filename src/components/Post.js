@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Head from "next/head";
 import PostLayout from "@/components/PostLayout";
+import { formatDate } from "@/utils";
 
 export default function Post({ post, content }) {
   return (
@@ -20,10 +21,7 @@ export default function Post({ post, content }) {
             </a>
           </Link>
           <div className="text-center">
-            <time>
-              Published: {(new Date(post.frontMatter.date))
-                .toLocaleDateString()}
-            </time>
+            Published on {formatDate(new Date(post.frontMatter.date))}
           </div>
           <div className="text-center mb-4">
             {post.frontMatter.series.map((series) =>

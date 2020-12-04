@@ -1,6 +1,7 @@
 import Link from "next/link";
 import GlobalHeader from "@/components/GlobalHeader";
 import GlobalFooter from "@/components/GlobalFooter";
+import { formatDate } from "@/utils";
 
 export default function PostListLayout({ posts, title }) {
   return (
@@ -20,9 +21,9 @@ export default function PostListLayout({ posts, title }) {
                 <span>
                   {p.frontMatter.title}
                 </span>
-                <time className="text-xs ml-6">
-                  {(new Date(p.frontMatter.date)).toLocaleDateString()}
-                </time>
+                <span className="text-xs ml-6">
+                  {formatDate(new Date(p.frontMatter.date))}
+                </span>
               </a>
             </Link>
             <div className="flex flex-wrap">
