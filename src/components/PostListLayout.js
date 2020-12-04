@@ -15,7 +15,7 @@ export default function PostListLayout({ posts, title }) {
           >
             <Link href={`/${p.slug}`}>
               <a
-                className="flex justify-between items-start font-bold text-xl mb-1"
+                className="flex justify-between items-start text-lg mb-1"
               >
                 <span>
                   {p.frontMatter.title}

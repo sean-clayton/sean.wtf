@@ -13,7 +13,7 @@ export default function Post({ post, content }) {
           <Link href={`/${post.slug}`}>
             <a>
               <h1
-                className="text-center text-2xl mb-4 md:text-4xl font-bold md:mb-8 text-gray-800"
+                className="text-center text-2xl mb-4 md:text-4xl md:mb-8 text-gray-800"
               >
                 {post.frontMatter.title}
               </h1>

@@ -15,3 +15,17 @@ body {
   word-break: break-word;
   hyphens: auto;
 }
+
+.prose > p:first-of-type::first-line {
+  font-variant: small-caps;
+  font-weight: 500;
+}
+
+.prose > p:first-of-type::first-letter {
+  font-variant: uppercase;
+  float: left;
+  margin-right: 0.75rem;
+  margin-top: 0.5rem;
+  font-size: 250%;
+  line-height: 0.75;
+}
