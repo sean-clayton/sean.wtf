@@ -36,7 +36,7 @@ export async function getStaticPaths() {
 
   return {
     paths: allSeries,
-    fallback: true,
+    fallback: false,
   };
 }
 
