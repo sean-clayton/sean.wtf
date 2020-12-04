@@ -20,7 +20,7 @@ const root = process.cwd();
 
 const contentRoot = path.join(root, "content");
 
-export async function getStaticPaths() {
+export async function getStaticPaths(...args) {
   const allSeries = _.map(
     _.uniq(_.flatMap(fs.readdirSync(contentRoot), (p) => {
       const content = fs.readFileSync(path.join(contentRoot, p), "utf8");
@@ -29,7 +29,7 @@ export async function getStaticPaths() {
     })),
     (series) => ({
       params: {
-        series: series,
+        series: encodeURIComponent(series),
       },
     }),
   );
@@ -41,6 +41,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params: { series } }) {
+  console.log(series);
   const contentRoot = path.join(root, "content");
   const postData = _.filter(
     _.reverse(_.sortBy(
@@ -56,7 +57,12 @@ export async function getStaticProps({ params: { series } }) {
       "frontMatter.date",
     )),
     (post) => {
-      return _.includes(post.frontMatter.series, series);
+      const slugs = post.frontMatter.series;
+      const slug = series;
+      return _.includes(
+        slugs,
+        slug,
+      );
     },
   );
   return { props: { postData, series } };

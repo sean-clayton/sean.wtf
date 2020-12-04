@@ -1,27 +1,49 @@
 import { useState } from "react";
 
-function IdleComponent({ onClick, url }) {
+function IdleComponent({ onClick, url, thumbnail }) {
   return (
-    <div className="w-full relative p-24 text-yellow-800">
+    <div
+      className="bg-yellow-600 hover:bg-yellow-700 w-full relative text-yellow-800 my-4"
+    >
+      {thumbnail
+        ? <img
+          src={thumbnail}
+          style={{ margin: 0, mixBlendMode: "multiply" }}
+          className="opacity-25 pointer-events-none object-fill object-center w-full"
+          alt="Video thumbnail"
+        />
+        : <div className="w-full h-64" />}
       <a
-        className="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center bg-yellow-300 hover:bg-yellow-500"
         target="_blank"
+        className="text-lg absolute font-bold h-full top-0 right-0 left-0 bottom-0 w-full flex justify-center items-center"
         rel="noopener noreferrer"
         href={url}
         onClick={onClick}
+        style={{
+          color: "white",
+        }}
       >
-        <span>Play Embedded Media</span>
+        <span
+          style={{
+            color: "white",
+            textShadow: "0 1px 0 black",
+          }}
+        >
+          Play Embedded Media
+        </span>
       </a>
     </div>
   );
 }
 
-export default function ComponentPlayer({ children, url }) {
+export default function ComponentPlayer({ children, url, thumbnail }) {
   const [open, setOpen] = useState(false);
   const openComponent = (e) => {
     e.preventDefault();
     setOpen(true);
   };
 
-  return open ? children : <IdleComponent onClick={openComponent} url={url} />;
+  return open
+    ? children
+    : <IdleComponent onClick={openComponent} url={url} thumbnail={thumbnail} />;
 }

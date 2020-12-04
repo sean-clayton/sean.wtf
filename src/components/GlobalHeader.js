@@ -5,9 +5,9 @@ export default function GlobalHeader() {
     <header className="flex justify-center items-center p-8 text-yellow-900">
       <nav>
         <Link href="/">
-          <a className="text-3xl md:text-5xl">
+          <a className="text-3xl md:text-4xl">
             <h1>
-              sean.wtf
+              sean wtf?
             </h1>
           </a>
         </Link>
