@@ -1,13 +1,7 @@
-import React, { useState, useEffect } from "react";
-import styled from "@emotion/styled";
+import { useEffect, useState } from "react";
 import _ from "lodash";
 import Prism from "prismjs";
 import Highlight, { defaultProps } from "prism-react-renderer";
-import { LiveProvider, LiveEditor, LiveError, LivePreview } from "react-live";
-import theme from "../../config/theme";
-import { transparentize } from "polished";
-
-(typeof global !== "undefined" ? global : window).Prism = Prism;
 
 _.each(
   [
@@ -29,91 +23,31 @@ _.each(
     "sql",
     "jsx",
     "tsx",
-    "livescript"
+    "livescript",
   ],
-  l => {
+  (l) => {
     require(`prismjs/components/prism-${l}`);
-  }
+  },
 );
 
-const Wrapper = styled.div`
-  overflow: auto;
-  background-color: ${theme.colors.primaryXLight};
-  box-shadow: 0 0 0 1px ${theme.colors.primary};
-  overflow-x: auto;
-`;
-
-const Pre = styled.pre`
-  float: left;
-  overflow: initial;
-`;
-
-const LineNumber = styled.span`
-  display: inline-block;
-  width: 2em;
-  user-select: none;
-  color: ${p => transparentize(0.6, p.theme.colors.primary)};
-  font-size: 1.1rem;
-  line-height: 1.58;
-  --baseline-multiplier: 0.179;
-  --x-height-multiplier: 0.35;
-  @media (max-width: ${props => props.theme.breakpoints.phone}) {
-    font-size: 1rem;
-  }
-`;
-
 const customTheme = {
-  plain: {
-    backgroundColor: theme.colors.backgroundColor,
-    color: theme.colors.text
-  },
   styles: [
-    {
-      types: ["operator", "string", "keyword", "boolean"],
-      style: {
-        color: theme.colors.primaryDark
-      }
-    },
-    {
-      types: ["attr-name"],
-      style: {
-        color: theme.colors.primary
-      }
-    },
-    {
-      types: ["prolog", "doctype", "cdata", "punctuation"],
-      style: {}
-    },
     {
       types: ["comment"],
       style: {
-        color: theme.colors.bg,
-        backgroundColor: theme.colors.primary,
         fontWeight: "bold",
-        textDecoration: "underline"
-      }
+        textDecoration: "underline",
+      },
     },
     {
       types: ["namespace"],
-      style: {}
-    },
-    {
-      types: ["tag", "operator", "number"],
-      style: {}
+      style: {},
     },
     {
       types: ["property", "function"],
       style: {
-        fontWeight: "bold"
-      }
-    },
-    {
-      types: ["tag-id", "selector", "atrule-id"],
-      style: {}
-    },
-    {
-      types: ["attr-name"],
-      style: {}
+        fontWeight: "bold",
+      },
     },
     {
       types: [
@@ -129,47 +63,47 @@ const customTheme = {
         "regex",
         "at-rule",
         "constant",
-        "constructor"
+        "constructor",
       ],
       style: {
-        fontWeight: "bold"
-      }
+        fontWeight: "bold",
+      },
     },
     {
       types: ["placeholder", "variable", "builtin", "keyword"],
       style: {
-        fontStyle: "italic"
-      }
+        fontStyle: "italic",
+      },
     },
     {
       types: ["deleted"],
       style: {
-        textDecorationLine: "line-through"
-      }
+        textDecorationLine: "line-through",
+      },
     },
     {
       types: ["inserted"],
       style: {
-        textDecorationLine: "underline"
-      }
+        textDecorationLine: "underline",
+      },
     },
     {
       types: ["italic"],
       style: {
-        fontStyle: "italic"
-      }
+        fontStyle: "italic",
+      },
     },
     {
       types: ["important", "bold"],
       style: {
-        fontWeight: "bold"
-      }
+        fontWeight: "bold",
+      },
     },
     {
       types: ["important"],
-      style: {}
-    }
-  ]
+      style: {},
+    },
+  ],
 };
 
 const RE = /{([\d,-]+)}/;
@@ -178,8 +112,8 @@ function calculateLinesToHighlight(meta) {
   if (RE.test(meta)) {
     const lineNumbers = RE.exec(meta)[1]
       .split(",")
-      .map(v => v.split("-").map(y => parseInt(y, 10)));
-    return index => {
+      .map((v) => v.split("-").map((y) => parseInt(y, 10)));
+    return (index) => {
       const lineNumber = index + 1;
       const inRange = lineNumbers.some(([start, end]) =>
         end ? lineNumber >= start && lineNumber <= end : lineNumber === start
@@ -191,22 +125,39 @@ function calculateLinesToHighlight(meta) {
   }
 }
 
-function Code({ codeString, language, metastring, ...props }) {
+function Wrapper(p) {
+  return <div className="overflow-auto" {...p} />;
+}
+
+function Pre(p) {
+  return <pre {...p} />;
+}
+
+function LineNumbers(p) {
+  return <span className="inline-block w-6 select-none" {...p} />;
+}
+
+const tokenClassNames = {
+  tag: "text-code-red",
+  "attr-name": "text-code-yellow",
+  "attr-value": "text-code-green",
+  deleted: "text-code-red",
+  inserted: "text-code-green",
+  punctuation: "text-code-white",
+  keyword: "text-code-purple",
+  string: "text-code-green",
+  function: "text-code-blue",
+  boolean: "text-code-red",
+  comment: "text-gray-400 italic",
+};
+
+export default function Code({ codeString, language, metastring, ...props }) {
   const [loaded, setLoaded] = useState(false);
   useEffect(() => {
     setLoaded(true);
   }, []);
 
   if (loaded) {
-    if (props["react-live"]) {
-      return (
-        <LiveProvider code={codeString} noInline={true} theme={customTheme}>
-          <LiveEditor />
-          <LiveError />
-          <LivePreview />
-        </LiveProvider>
-      );
-    }
     const shouldHighlightLine = calculateLinesToHighlight(metastring);
     return (
       <Highlight
@@ -225,13 +176,24 @@ function Code({ codeString, language, metastring, ...props }) {
                   {...getLineProps({
                     line,
                     key: i,
-                    className: shouldHighlightLine(i) ? "highlight-line" : ""
+                    className: shouldHighlightLine(i) ? "highlight-line" : "",
                   })}
                 >
-                  <LineNumber>{i + 1}</LineNumber>
-                  {line.map((token, key) => (
-                    <span key={key} {...getTokenProps({ token, key })} />
-                  ))}
+                  <LineNumbers>{i + 1}</LineNumbers>
+                  {line.map((token, key) => {
+                    const { className, ...tokenProps } = getTokenProps(
+                      { token, key },
+                    );
+                    const [tok, type] = className.split(" ");
+                    const newClassName = tok === "token"
+                      ? tokenClassNames[type]
+                      : "";
+                    return <span
+                      key={key}
+                      {...tokenProps}
+                      className={newClassName}
+                    />;
+                  })}
                 </div>
               ))}
             </Pre>
@@ -249,5 +211,3 @@ function Code({ codeString, language, metastring, ...props }) {
     );
   }
 }
-
-export default Code;

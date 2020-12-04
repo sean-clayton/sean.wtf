@@ -1,61 +1,36 @@
-import React from "react";
-import { graphql } from "gatsby";
-import styled from "@emotion/styled";
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
+import Head from "next/head";
+import _ from "lodash";
+import PostListLayout from "@/components/PostListLayout";
 
-import { Header, Layout, Wrapper, Article } from "../components";
+const root = process.cwd();
 
-const Content = styled.div`
-  grid-column: 2;
-  padding-top: 3rem;
-  @media (max-width: ${props => props.theme.breakpoints.phone}) {
-    padding-top: 2rem;
-  }
-  overflow: hidden;
-`;
+export default function Home({ postData }) {
+  return (
+    <>
+      <Head>
+        <title>sean.wtf</title>
+      </Head>
+      <PostListLayout posts={postData} />
+    </>
+  );
+}
 
-const IndexPage = ({
-  data: {
-    allMdx: { nodes: posts }
-  }
-}) => (
-  <Layout>
-    <Wrapper>
-      <Header />
-      <Content>
-        {posts.map(post => (
-          <Article
-            title={post.frontmatter.title}
-            link={post.frontmatter.link}
-            date={post.frontmatter.date}
-            excerpt={post.excerpt}
-            timeToRead={post.timeToRead}
-            slug={post.fields.slug}
-            series={post.frontmatter.series}
-            key={post.fields.slug}
-          />
-        ))}
-      </Content>
-    </Wrapper>
-  </Layout>
-);
+export async function getStaticProps() {
+  const contentRoot = path.join(root, "content");
+  const postData = _.reverse(_.sortBy(
+    _.map(fs.readdirSync(contentRoot), (p) => {
+      const content = fs.readFileSync(path.join(contentRoot, p), "utf8");
 
-export default IndexPage;
-
-export const IndexQuery = graphql`
-  query IndexQuery {
-    allMdx(sort: { fields: [frontmatter___date], order: DESC }) {
-      nodes {
-        fields {
-          slug
-        }
-        frontmatter {
-          title
-          link
-          date(formatString: "MM/DD/YYYY")
-          series
-        }
-        timeToRead
-      }
-    }
-  }
-`;
+      return {
+        slug: p.replace(/\.mdx/, ""),
+        content,
+        frontMatter: matter(content).data,
+      };
+    }),
+    "frontMatter.date",
+  ));
+  return { props: { postData } };
+}

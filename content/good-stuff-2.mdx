@@ -1,0 +1,130 @@
+---
+title: "Good Stuff #2"
+date: "2019-07-01"
+series:
+  - good stuff
+---
+
+I'm liking where this [good stuff](/series/good-stuff) series of posts is going,
+so I'm going to continue it with some stuff that's happened since last time!
+
+### Chernobyl
+
+#### SPOILERS AHEAD. You have been warned.
+
+Chernobyl has finished its mini-series, and boy oh boy was it good!
+I really love how during the climax of the episode it reveals what went on _right_ before the explosion.
+In the first episode we only got to see the control room right _after_ the explosion happened,
+so we didn't get to see what kind of pressures the operators were working with to actually cause it.
+
+It reminds me of a great developer talk about a similar event at Three Mile Island[^0]
+
+<YouTube videoId="1xQeXOz0Ncs" />
+
+### WWDC
+
+Apple's World-Wide Developer Conference come and gone.
+With it, they always introduce some really neat and interesting things, and this year was no different.
+
+#### Sign In with Apple[^2]
+
+Apple is introducing a "Sign In with Apple" authentication framework.
+At first glance it doesn't really look that innovative,
+but users now have the option to generate random email addresses that forward to their real address.
+Obviously, this does wonders for user privacy and I'm _really_ considering making use of my Apple email now 😅.
+
+#### SwiftUI[^3]
+
+This is probably my favorite announcement of the entire thing.
+If you're familiar with React or Flutter, then you know about declarative UI frameworks.
+SwiftUI is Apple's go at it, with the intention on providing a UI framework with an API
+that is cross-platform. A `List` view has the same API across all Apple platforms.
+
+### LiveScript[^4]
+
+Y'all...
+I'm having fun writing JavaScript again...
+Sort of.
+
+Back in the day, way before ES6/ES2015[^5] was released,
+there was a language called CoffeeScript[^6], I used it and it was awesome.
+It had so many things that JavaScript didn't have at the time!
+Template strings, arrow functions (with implicit returns!), classes,
+destructuring, and a lot more!
+It also has a syntax that is _so minimal_ and fun to write in!
+But, all good things must come to an end, and CoffeeScript's community pretty much
+ended using CoffeeScript in production once ES2015 released with a lot of the niceness
+that CoffeeScript once provided.
+
+Just the other day I was reading through the ECMAScript Pipeline Operator Proposal[^7].
+I was looking at the other languages that had the operator and saw one called LiveScript.
+After looking at the documentation...
+I was hooked!
+
+```livescript
+require! {
+  react: {use-state}
+  'react-dom': ReactDOM
+  '@emotion/styled': styled
+  'ls-react': {$, h, button, h1, p}
+  'lodash/fp': {get}
+}
+
+StyledButton = styled.button ->
+  background-color: get 'theme.colors.primary'
+  color: \white
+
+App = ({ title }) ->
+  [count, set-count] = use-state 0
+  increment = -> set-count count + 1
+
+  $ (
+    h1 class-name: 'heading', title
+    p {} "Count is: #{count}"
+    h StyledButton, on-click: increment, '+'
+  )
+
+ReactDOM.render(
+  h App, title: 'Yo!'
+  document.getElementById "root"
+)
+```
+
+I'm probably not switching over from ReasonML anytime soon,
+but this hits that spot where I just want some JS to prototype with,
+but I also don't want to write in the C-like syntax that JavaScript has.
+
+I have a lot more to say on the the topic and will probably write a post on it,
+but holy man am I excited to use this 😀!
+
+### Dungeon Mastering
+
+I run a once 4-player, now 3-player D&D campaign.
+This is my first time ever playing or being a dungeon master.
+Recently, a player told me he's going to have to stop playing for what most likely is forever.
+
+It's been really fun coming up with ways to play how it'll all work out.
+If it's pretty much for-sure forever, maybe their character dies offscreen?
+Maybe he stays in the town because he found his calling there,
+but there's a cannibalistic underground cult that is trying to lure him in
+to kill him and eat him?
+Maybe there's a revolution spinning up in the towns outside of the big city
+and he realizes this and tells his former adventuring friends?
+
+So many possibilities!
+
+### More Good Stuff
+
+- Elixir 1.9 Release! Releases support! https://elixir-lang.org/blog/2019/06/24/elixir-v1-9-0-released/
+- I've had this coffee maker over a year and it's been the best \$60 I've ever spent.
+  I'm no coffee snob—I just brew some drip coffee every morning and I like it hot and brewed quickly.
+  If you're like me, maybe you should give it a look yourself. https://smile.amazon.com/dp/B0037ZG3DS
+- This was a fun test! I got a 73% http://vocabulary.ugent.be/
+
+[^1]: Three Mile Island Accident https://en.wikipedia.org/wiki/Three_Mile_Island_accident
+[^2]: Sign in With Apple https://developer.apple.com/sign-in-with-apple/
+[^3]: SwiftUI https://developer.apple.com/xcode/swiftui/
+[^4]: LiveScript https://livescript.net
+[^5]: ES6 Features https://github.com/lukehoban/es6features
+[^6]: CoffeeScript https://coffeescript.org/
+[^7]: The Pipeline Operator https://github.com/tc39/proposal-pipeline-operator

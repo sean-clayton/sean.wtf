@@ -1,6 +1,3 @@
-/* eslint react/no-unknown-property: 0 */
-/* eslint react/prefer-stateless-function: 0 */
-
 /**
  * Spotify player iframe widget
  *
@@ -8,24 +5,25 @@
  * @see https://developer.spotify.com/technologies/widgets/spotify-play-button/
  */
 
-import React, { Component } from "react";
+import React from "react";
+import ComponentPlayer from "@/components/ComponentPlayer";
 
 // Size presets, defined by Spotify
 const sizePresets = {
   large: {
     width: 300,
-    height: 380
+    height: 380,
   },
   compact: {
     width: 300,
-    height: 80
-  }
+    height: 80,
+  },
 };
 
 /**
  * SpotifyPlayer class
  */
-class SpotifyPlayer extends Component {
+class SpotifyComponent extends React.Component {
   // ------------------------------------------------------
   // Render
   // ------------------------------------------------------
@@ -52,10 +50,16 @@ class SpotifyPlayer extends Component {
   }
 }
 
-SpotifyPlayer.defaultProps = {
+SpotifyComponent.defaultProps = {
   size: "large",
   view: "list",
-  theme: "black"
+  theme: "black",
 };
 
-export default SpotifyPlayer;
+export default function SpotifyPlayer(props) {
+  return (
+    <ComponentPlayer url={props.uri}>
+      <SpotifyComponent {...props} />
+    </ComponentPlayer>
+  );
+}

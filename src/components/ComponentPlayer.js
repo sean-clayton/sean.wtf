@@ -1,61 +1,27 @@
-import React, { useState } from "react";
-import styled from "@emotion/styled";
-import { transparentize } from "polished";
-
-const IdleComponentContainer = styled.div`
-  width: 100%;
-  padding-top: 50%;
-  position: relative;
-  margin-block-start: 1.33em;
-  margin-block-end: 1.33em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-`;
-
-const IdleComponentWrapper = styled.a`
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  color: ${p => p.theme.colors.bg};
-  background-color: ${p => p.theme.colors.primary};
-  box-shadow: 0 0 0 1px ${p => p.theme.colors.primary};
-  transition: background-color ${p => p.theme.transitions.normal},
-    color ${p => p.theme.transitions.normal};
-
-  &:hover {
-    color: ${p => p.theme.colors.bg};
-    background-color: ${p => transparentize(0.2, p.theme.colors.primary)};
-  }
-`;
+import { useState } from "react";
 
 function IdleComponent({ onClick, url }) {
   return (
-    <IdleComponentContainer>
-      <IdleComponentWrapper
+    <div className="w-full relative p-24 text-yellow-800">
+      <a
+        className="absolute top-0 left-0 bottom-0 right-0 flex justify-center items-center bg-yellow-300 hover:bg-yellow-500"
         target="_blank"
         rel="noopener noreferrer"
         href={url}
         onClick={onClick}
       >
         <span>Play Embedded Media</span>
-      </IdleComponentWrapper>
-    </IdleComponentContainer>
+      </a>
+    </div>
   );
 }
 
-function ComponentPlayer({ children, url }) {
+export default function ComponentPlayer({ children, url }) {
   const [open, setOpen] = useState(false);
-  const openComponent = e => {
+  const openComponent = (e) => {
     e.preventDefault();
     setOpen(true);
   };
 
   return open ? children : <IdleComponent onClick={openComponent} url={url} />;
 }
-
-export default ComponentPlayer;
