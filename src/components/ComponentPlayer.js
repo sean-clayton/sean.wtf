@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { Suspense, useState } from "react";
 
-function IdleComponent({ onClick, url, thumbnail }) {
+function IdleComponent({ onClick, url, thumbnail, loading }) {
   return (
     <div
       className="bg-yellow-600 hover:bg-yellow-700 w-full relative text-yellow-800 my-4"
@@ -29,7 +29,7 @@ function IdleComponent({ onClick, url, thumbnail }) {
             textShadow: "0 1px 0 black",
           }}
         >
-          Play Embedded Media
+          {loading ? "Loading..." : "Play Embedded Media"}
         </span>
       </a>
     </div>
@@ -44,6 +44,13 @@ export default function ComponentPlayer({ children, url, thumbnail }) {
   };
 
   return open
-    ? children
+    ? <Suspense
+      fallback={<IdleComponent
+        loading
+        thumbnail={thumbnail}
+      />}
+    >
+      {children}
+    </Suspense>
     : <IdleComponent onClick={openComponent} url={url} thumbnail={thumbnail} />;
 }

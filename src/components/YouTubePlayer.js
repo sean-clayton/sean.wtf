@@ -1,5 +1,7 @@
-import YouTube from "react-youtube";
-import ComponentPlayer from "./ComponentPlayer";
+import ComponentPlayer from "@/components/ComponentPlayer";
+import { lazy, Suspense } from "react";
+
+const YouTubeLoadable = lazy(() => import("react-youtube"));
 
 export default function YouTubePlayer(props) {
   return (
@@ -7,7 +9,7 @@ export default function YouTubePlayer(props) {
       thumbnail={`https://img.youtube.com/vi/${props.videoId}/maxresdefault.jpg`}
       url={`https://www.youtube.com/watch?v=${props.videoId}`}
     >
-      <YouTube className="w-full max-h-72 my-4" {...props} />
+      <YouTubeLoadable className="w-full max-h-72 my-4" {...props} />
     </ComponentPlayer>
   );
 }
