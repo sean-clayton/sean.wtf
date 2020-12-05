@@ -41,7 +41,7 @@ export default function Code({ codeString, language, metastring }) {
       <Suspense
         fallback={<Wrapper>
           <Pre>
-            <code>{codeString}</code>
+            <code className="max-w-screen-md">{codeString}</code>
           </Pre>
         </Wrapper>}
       >
@@ -56,7 +56,7 @@ export default function Code({ codeString, language, metastring }) {
     return (
       <Wrapper>
         <Pre>
-          <code>{codeString}</code>
+          <code className="max-w-screen-md">{codeString}</code>
         </Pre>
       </Wrapper>
     );

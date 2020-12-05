@@ -10,7 +10,7 @@ export default function Post({ post, content }) {
         <title>sean.wtf &middot; {post.frontMatter.title}</title>
       </Head>
       <PostLayout>
-        <div className="mx-auto max-w-prose">
+        <div className="mx-auto max-w-screen-md">
           <Link href={`/${post.slug}`}>
             <a>
               <h1
@@ -32,20 +32,22 @@ export default function Post({ post, content }) {
               </Link>
             )}
           </div>
-          <article className="prose md:prose-lg prose-yellow">
-            {post.frontMatter.link
-              ? <div>
-                Re: <a
-                  href={post.frontMatter.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {post.frontMatter.link}
-                </a>
-              </div>
-              : null}
-            {content}
-          </article>
+          <div className="max-w-screen-md">
+            <article className="prose md:prose-lg prose-yellow max-w-none">
+              {post.frontMatter.link
+                ? <div>
+                  Re: <a
+                    href={post.frontMatter.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {post.frontMatter.link}
+                  </a>
+                </div>
+                : null}
+              {content}
+            </article>
+          </div>
         </div>
       </PostLayout>
     </>

@@ -8,7 +8,7 @@ export default function PostListLayout({ posts, title }) {
     <main className="min-h-screen flex flex-col">
       <GlobalHeader />
       {title ? <h2 className="text-xl text-center">{title}</h2> : null}
-      <ol className="flex-1 p-4 w-full max-w-prose mx-auto">
+      <ol className="flex-1 p-4 w-full max-w-screen-md mx-auto">
         {posts.map((p) => {
           return <li
             className="mb-4 text-yellow-900 flex flex-col"
