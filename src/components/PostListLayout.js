@@ -1,3 +1,4 @@
+import { kebabCase } from "lodash-es";
 import Link from "next/link";
 import GlobalHeader from "@/components/GlobalHeader";
 import GlobalFooter from "@/components/GlobalFooter";
@@ -28,7 +29,7 @@ export default function PostListLayout({ posts, title }) {
             </Link>
             <div className="flex flex-wrap">
               {(p.frontMatter.series).map((series) =>
-                <Link key={series} href={`/series/${series}`}>
+                <Link key={series} href={`/series/${kebabCase(series)}`}>
                   <a className="text-xs mr-2">
                     #{series}
                   </a>

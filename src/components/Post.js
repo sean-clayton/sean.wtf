@@ -1,3 +1,4 @@
+import _ from "lodash-es";
 import Link from "next/link";
 import Head from "next/head";
 import PostLayout from "@/components/PostLayout";
@@ -25,7 +26,7 @@ export default function Post({ post, content }) {
           </div>
           <div className="text-center mb-4">
             {post.frontMatter.series.map((series) =>
-              <Link key={series} href={`/series/${series}`}>
+              <Link key={series} href={`/series/${_.kebabCase(series)}`}>
                 <a className="text-sm mr-2">
                   #{series}
                 </a>

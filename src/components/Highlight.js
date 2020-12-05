@@ -1,6 +1,6 @@
 import Prism from "prismjs";
 import HighlightBase, { defaultProps } from "prism-react-renderer";
-import _ from "lodash";
+import { each } from "lodash-es";
 
 function Wrapper(p) {
   return <div className="overflow-auto" {...p} />;
@@ -10,7 +10,7 @@ function Pre(p) {
   return <pre {...p} />;
 }
 
-_.each(
+each(
   [
     "ocaml",
     "reason",

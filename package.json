@@ -12,7 +12,7 @@
   "dependencies": {
     "@next/mdx": "^10.0.3",
     "gray-matter": "^4.0.2",
-    "lodash": "^4.17.20",
+    "lodash-es": "^4.17.15",
     "next": "10.0.3",
     "next-mdx-remote": "^1.0.0",
     "prism-react-renderer": "^1.1.1",
@@ -24,6 +24,7 @@
   "devDependencies": {
     "@tailwindcss/typography": "^0.3.1",
     "autoprefixer": "^10.0.4",
+    "next-transpile-modules": "^6.0.0",
     "postcss": "^8.1.13",
     "tailwindcss": "^2.0.1"
   }

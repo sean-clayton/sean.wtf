@@ -2,7 +2,16 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Head from "next/head";
-import _ from "lodash";
+import {
+  filter,
+  flatMap,
+  includes,
+  kebabCase,
+  map,
+  reverse,
+  sortBy,
+  uniq,
+} from "lodash-es";
 import PostListLayout from "@/components/PostListLayout";
 
 export default function Series({ postData = [], series }) {
@@ -20,12 +29,12 @@ const root = process.cwd();
 
 const contentRoot = path.join(root, "content");
 
-export async function getStaticPaths(...args) {
-  const allSeries = _.map(
-    _.uniq(_.flatMap(fs.readdirSync(contentRoot), (p) => {
+export async function getStaticPaths() {
+  const allSeries = map(
+    uniq(flatMap(fs.readdirSync(contentRoot), (p) => {
       const content = fs.readFileSync(path.join(contentRoot, p), "utf8");
       const frontMatter = matter(content).data;
-      return frontMatter.series;
+      return map(frontMatter.series, kebabCase);
     })),
     (series) => ({
       params: {
@@ -42,9 +51,9 @@ export async function getStaticPaths(...args) {
 
 export async function getStaticProps({ params: { series } }) {
   const contentRoot = path.join(root, "content");
-  const postData = _.filter(
-    _.reverse(_.sortBy(
-      _.map(fs.readdirSync(contentRoot), (p) => {
+  const postData = filter(
+    reverse(sortBy(
+      map(fs.readdirSync(contentRoot), (p) => {
         const content = fs.readFileSync(path.join(contentRoot, p), "utf8");
         const frontMatter = matter(content).data;
         return {
@@ -56,9 +65,9 @@ export async function getStaticProps({ params: { series } }) {
       "frontMatter.date",
     )),
     (post) => {
-      const slugs = post.frontMatter.series;
-      const slug = series;
-      return _.includes(
+      const slugs = map(post.frontMatter.series, kebabCase);
+      const slug = kebabCase(series);
+      return includes(
         slugs,
         slug,
       );
