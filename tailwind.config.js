@@ -30,7 +30,7 @@ module.exports = {
         mono:
           `"Triplicate T4c", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace`,
         serif:
-          `"Source Serif Pro", "Palatino Linotype", Garamond, "Hoefler Text", ui-serif, "Times New Roman", Times, serif`,
+          `"Source Serif Variable", Iowan Old Style, Apple Garamond, Palatino Linotype, Times New Roman, "Droid Serif", Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol`,
       },
     },
   },
