@@ -15,13 +15,13 @@ export default function Post({ post, content }) {
           <Link href={`/${post.slug}`}>
             <a>
               <h1
-                className="text-center text-2xl mb-4 md:text-4xl md:mb-8 text-gray-800"
+                className="text-center text-2xl tracking-tighter mb-4 md:text-4xl md:mb-8 text-gray-800"
               >
                 {post.frontMatter.title}
               </h1>
             </a>
           </Link>
-          <div className="text-center">
+          <div className="text-center italic">
             Published on {formatDate(new Date(post.frontMatter.date))}
           </div>
           <div className="text-center mb-4">
