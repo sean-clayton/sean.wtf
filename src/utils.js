@@ -2,9 +2,10 @@ export function isExternal(url) {
   return /^(https?|mailto):\/\//.test(url);
 }
 
+/**
+ * formatDate
+ * @param {Date} date 
+ */
 export function formatDate(date) {
-  return date.toLocaleDateString(
-    undefined,
-    { weekday: "long", year: "numeric", month: "long", day: "numeric" },
-  );
+  return date.toISOString().split("T")[0];
 }
