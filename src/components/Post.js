@@ -15,16 +15,16 @@ export default function Post({ post, content }) {
           <Link href={`/${post.slug}`}>
             <a>
               <h1
-                className="text-center text-2xl font-black mb-4 md:text-4xl md:mb-8 text-gray-800"
+                className="text-center text-3xl font-black mb-4 md:text-5xl md:mb-8 text-gray-800"
               >
                 {post.frontMatter.title}
               </h1>
             </a>
           </Link>
-          <div className="text-center italic">
+          <div className="text-center text-sm md:text-base italic">
             Published on {formatDate(new Date(post.frontMatter.date))}
           </div>
-          <div className="text-center mb-4">
+          <div className="text-center text-sm md:text-base mb-4">
             {post.frontMatter.series.map((series) =>
               <Link key={series} href={`/series/${kebabCase(series)}`}>
                 <a className="text-sm mr-2">
@@ -33,7 +33,7 @@ export default function Post({ post, content }) {
               </Link>
             )}
           </div>
-          <div className="max-w-screen-md">
+          <div className="max-w-screen-md mt-8">
             <article className="prose md:prose-lg prose-yellow max-w-none">
               {post.frontMatter.link
                 ? <div>
