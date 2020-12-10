@@ -37,7 +37,7 @@ body {
 
 @font-face {
   font-family: "Triplicate T4c";
-  src: url("/fonts/TriplicateT4c.woff2") format("woff2");
+  src: local("TriplicateT4c"), url("/fonts/TriplicateT4c.woff2") format("woff2");
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -45,7 +45,8 @@ body {
 
 @font-face {
   font-family: "Triplicate T4c";
-  src: url("/fonts/TriplicateT4c-Bold.woff2") format("woff2");
+  src: local("TriplicateT4c-Bold"),
+    url("/fonts/TriplicateT4c-Bold.woff2") format("woff2");
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -53,7 +54,8 @@ body {
 
 @font-face {
   font-family: "Triplicate T4c";
-  src: url("/fonts/TriplicateT4c-Italic.woff2") format("woff2");
+  src: local("TriplicateT4c-Italic"),
+    url("/fonts/TriplicateT4c-Italic.woff2") format("woff2");
   font-weight: normal;
   font-style: italic;
   font-display: swap;
@@ -61,7 +63,44 @@ body {
 
 @font-face {
   font-family: "Triplicate T4c";
-  src: url("/fonts/TriplicateT4c-BoldItalic.woff2") format("woff2");
+  src: local("TriplicateT4c-BoldItalic"),
+    url("/fonts/TriplicateT4c-BoldItalic.woff2") format("woff2");
+  font-weight: bold;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Serif";
+  src: local("NotoSerif-Regular"),
+    url("/fonts/NotoSerif-Regular.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Serif";
+  src: local("NotoSerif-Bold"),
+    url("/fonts/NotoSerif-Bold.woff2") format("woff2");
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Serif";
+  src: local("NotoSerif-Italic"),
+    url("/fonts/NotoSerif-Italic.woff2") format("woff2");
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Noto Serif";
+  src: local("NotoSerif-BoldItalic"),
+    url("/fonts/NotoSerif-BoldItalic.woff2") format("woff2");
   font-weight: bold;
   font-style: italic;
   font-display: swap;
@@ -73,6 +112,7 @@ body {
   font-style: normal;
   font-stretch: normal;
   src: url("/fonts/SourceSerifVariable-Roman.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
@@ -81,4 +121,5 @@ body {
   font-style: italic;
   font-stretch: normal;
   src: url("/fonts/SourceSerifVariable-Italic.woff2") format("woff2");
+  font-display: swap;
 }
