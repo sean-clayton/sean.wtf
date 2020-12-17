@@ -13,6 +13,7 @@ export default function Home({ postData }) {
       <Head>
         <title>sean.wtf</title>
       </Head>
+      <a rel="me" className="hidden" href="https://mastodon.social/@seanc" />
       <PostListLayout posts={postData} />
     </>
   );
