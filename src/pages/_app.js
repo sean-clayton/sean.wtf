@@ -6,7 +6,6 @@ function MyApp({ Component, pageProps }) {
   return (
     <>
       <Head>
-        <html lang="en-US" />
         <link rel="icon" href="/favicon.png" />
         <Seo />
       </Head>
