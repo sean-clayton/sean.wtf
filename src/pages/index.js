@@ -27,7 +27,6 @@ export async function getStaticProps() {
 
       return {
         slug: p.replace(/\.mdx/, ""),
-        content,
         frontMatter: matter(content).data,
       };
     }),
