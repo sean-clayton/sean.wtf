@@ -1,14 +1,21 @@
-import { kebabCase } from "lodash-es";
+import { get, kebabCase } from "lodash-es";
 import Link from "next/link";
 import Head from "next/head";
 import PostLayout from "@/components/PostLayout";
 import { formatDate } from "@/utils";
 
 export default function Post({ post, content }) {
+  const description = get(
+    post,
+    "frontMatter.description",
+    "A post by Sean Clayton.",
+  );
+
   return (
     <>
       <Head>
         <title>sean.wtf &middot; {post.frontMatter.title}</title>
+        <meta name="Description" content={description} />
       </Head>
       <PostLayout>
         <div className="mx-auto max-w-screen-md">
