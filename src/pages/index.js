@@ -12,11 +12,11 @@ export default function Home({ postData }) {
     <>
       <Head>
         <title>sean.wtf</title>
+        <meta
+          name="Description"
+          content="Writings and thoughts from Sean Clayton."
+        />
       </Head>
-      <meta
-        name="Description"
-        content="Writings and thoughts from Sean Clayton."
-      />
       <a rel="me" className="hidden" href="https://mastodon.social/@seanc" />
       <PostListLayout posts={postData} />
     </>
