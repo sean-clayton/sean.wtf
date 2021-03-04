@@ -15,6 +15,7 @@ each(
     "ocaml",
     "reason",
     "fsharp",
+    "csharp",
     "coffeescript",
     "diff",
     "javascript",
@@ -31,10 +32,11 @@ each(
     "jsx",
     "tsx",
     "livescript",
+    "gdscript",
   ],
   (l) => {
     require(`prismjs/components/prism-${l}`);
-  },
+  }
 );
 
 const customTheme = {
@@ -113,9 +115,11 @@ const customTheme = {
   ],
 };
 
-export default function Highlight(
-  { language, codeString, shouldHighlightLine },
-) {
+export default function Highlight({
+  language,
+  codeString,
+  shouldHighlightLine,
+}) {
   return (
     <HighlightBase
       {...defaultProps}
@@ -137,14 +141,9 @@ export default function Highlight(
                 })}
               >
                 {line.map((token, key) => {
-                  const tokenProps = getTokenProps(
-                    { token, key },
-                  );
+                  const tokenProps = getTokenProps({ token, key });
 
-                  return <span
-                    key={key}
-                    {...tokenProps}
-                  />;
+                  return <span key={key} {...tokenProps} />;
                 })}
               </div>
             ))}
