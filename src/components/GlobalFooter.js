@@ -1,12 +1,8 @@
 export default function GlobalFooter() {
   return (
-    <footer
-      className="max-w-screen my-8"
-    >
+    <footer className="max-w-screen my-8">
       <div className="mx-auto max-w-screen-md text-center">
-        <div
-          className="prose prose-sm prose-yellow max-w-none"
-        >
+        <div className="prose prose-sm prose-yellow max-w-none">
           All writings on this site by Sean Clayton are available under the{" "}
           <a
             target="_blank"

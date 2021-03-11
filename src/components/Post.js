@@ -8,7 +8,7 @@ export default function Post({ post, content }) {
   const description = get(
     post,
     "frontMatter.description",
-    "A post by Sean Clayton.",
+    "A post by Sean Clayton."
   );
 
   return (
@@ -21,9 +21,7 @@ export default function Post({ post, content }) {
         <div className="mx-auto max-w-screen-md">
           <Link href={`/${post.slug}`}>
             <a>
-              <h1
-                className="text-center text-3xl font-black mb-4 md:text-5xl md:mb-8 text-gray-800"
-              >
+              <h1 className="text-center text-3xl font-black mb-4 md:text-5xl md:mb-8 text-gray-800">
                 {post.frontMatter.title}
               </h1>
             </a>
@@ -32,19 +30,18 @@ export default function Post({ post, content }) {
             Published on {formatDate(new Date(post.frontMatter.date))}
           </div>
           <div className="text-center text-sm md:text-base mb-4">
-            {post.frontMatter.series.map((series) =>
+            {post.frontMatter.series.map((series) => (
               <Link key={series} href={`/series/${kebabCase(series)}`}>
-                <a className="text-sm mr-2">
-                  #{series}
-                </a>
+                <a className="text-sm mr-2">#{series}</a>
               </Link>
-            )}
+            ))}
           </div>
           <div className="max-w-screen-md mt-8">
             <article className="prose md:prose-lg prose-yellow max-w-none">
-              {post.frontMatter.link
-                ? <div>
-                  Re: <a
+              {post.frontMatter.link ? (
+                <div>
+                  Re:{" "}
+                  <a
                     href={post.frontMatter.link}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -52,7 +49,7 @@ export default function Post({ post, content }) {
                     {post.frontMatter.link}
                   </a>
                 </div>
-                : null}
+              ) : null}
               {content}
             </article>
           </div>

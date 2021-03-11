@@ -4,7 +4,7 @@ export function isExternal(url) {
 
 /**
  * formatDate
- * @param {Date} date 
+ * @param {Date} date
  */
 export function formatDate(date) {
   return date.toISOString().split("T")[0];

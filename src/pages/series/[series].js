@@ -31,16 +31,18 @@ const contentRoot = path.join(root, "content");
 
 export async function getStaticPaths() {
   const allSeries = map(
-    uniq(flatMap(fs.readdirSync(contentRoot), (p) => {
-      const content = fs.readFileSync(path.join(contentRoot, p), "utf8");
-      const frontMatter = matter(content).data;
-      return map(frontMatter.series, kebabCase);
-    })),
+    uniq(
+      flatMap(fs.readdirSync(contentRoot), (p) => {
+        const content = fs.readFileSync(path.join(contentRoot, p), "utf8");
+        const frontMatter = matter(content).data;
+        return map(frontMatter.series, kebabCase);
+      })
+    ),
     (series) => ({
       params: {
         series: encodeURIComponent(series),
       },
-    }),
+    })
   );
 
   return {
@@ -52,26 +54,25 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params: { series } }) {
   const contentRoot = path.join(root, "content");
   const postData = filter(
-    reverse(sortBy(
-      map(fs.readdirSync(contentRoot), (p) => {
-        const content = fs.readFileSync(path.join(contentRoot, p), "utf8");
-        const frontMatter = matter(content).data;
-        return {
-          slug: p.replace(/\.mdx/, ""),
-          content,
-          frontMatter,
-        };
-      }),
-      "frontMatter.date",
-    )),
+    reverse(
+      sortBy(
+        map(fs.readdirSync(contentRoot), (p) => {
+          const content = fs.readFileSync(path.join(contentRoot, p), "utf8");
+          const frontMatter = matter(content).data;
+          return {
+            slug: p.replace(/\.mdx/, ""),
+            content,
+            frontMatter,
+          };
+        }),
+        "frontMatter.date"
+      )
+    ),
     (post) => {
       const slugs = map(post.frontMatter.series, kebabCase);
       const slug = kebabCase(series);
-      return includes(
-        slugs,
-        slug,
-      );
-    },
+      return includes(slugs, slug);
+    }
   );
   return { props: { postData, series } };
 }

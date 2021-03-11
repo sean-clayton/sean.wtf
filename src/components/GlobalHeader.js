@@ -6,9 +6,7 @@ export default function GlobalHeader() {
       <nav>
         <Link href="/">
           <a className="text-3xl md:text-4xl">
-            <h1>
-              sean wtf?
-            </h1>
+            <h1>sean wtf?</h1>
           </a>
         </Link>
       </nav>

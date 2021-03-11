@@ -4,21 +4,20 @@
   "private": true,
   "license": "Unlicense",
   "scripts": {
-    "dev": "next dev",
     "build": "next build",
     "export": "next export",
-    "start": "next start"
+    "start": "next"
   },
   "dependencies": {
     "@next/mdx": "^10.0.3",
     "gray-matter": "^4.0.2",
     "lodash-es": "^4.17.15",
-    "next": "10.0.3",
+    "next": "^10.0.8",
     "next-mdx-remote": "^1.0.0",
     "prism-react-renderer": "^1.1.1",
     "prismjs": "^1.22.0",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-youtube": "^7.13.0"
   },
   "devDependencies": {

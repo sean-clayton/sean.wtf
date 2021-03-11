@@ -25,16 +25,18 @@ export default function Home({ postData }) {
 
 export async function getStaticProps() {
   const contentRoot = path.join(root, "content");
-  const postData = reverse(sortBy(
-    map(fs.readdirSync(contentRoot), (p) => {
-      const content = fs.readFileSync(path.join(contentRoot, p), "utf8");
+  const postData = reverse(
+    sortBy(
+      map(fs.readdirSync(contentRoot), (p) => {
+        const content = fs.readFileSync(path.join(contentRoot, p), "utf8");
 
-      return {
-        slug: p.replace(/\.mdx/, ""),
-        frontMatter: matter(content).data,
-      };
-    }),
-    "frontMatter.date",
-  ));
+        return {
+          slug: p.replace(/\.mdx/, ""),
+          frontMatter: matter(content).data,
+        };
+      }),
+      "frontMatter.date"
+    )
+  );
   return { props: { postData } };
 }

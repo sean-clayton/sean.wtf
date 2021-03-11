@@ -31,9 +31,10 @@ function preToCodeBlock(preProps) {
     return {
       codeString: codeString.trim(),
       className,
-      language: matches && matches.groups && matches.groups.lang
-        ? matches.groups.lang
-        : "",
+      language:
+        matches && matches.groups && matches.groups.lang
+          ? matches.groups.lang
+          : "",
       ...props,
     };
   }
@@ -44,16 +45,10 @@ const components = {
     const { className, ...props } = preToCodeBlock(preProps);
     // if there's a codeString and some props, we passed the test
     if (props) {
-      return <Code
-        className={`${className} overflow-x-auto`}
-        {...props}
-      />;
+      return <Code className={`${className} overflow-x-auto`} {...props} />;
     } else {
       // it's possible to have a pre without a code in it
-      return <pre
-        className={`${className} overflow-x-auto`}
-        {...preProps}
-      />;
+      return <pre className={`${className} overflow-x-auto`} {...preProps} />;
     }
   },
   YouTube: YouTubePlayer,
@@ -82,7 +77,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({ params }) {
   const source = fs.readFileSync(
     path.join(root, "content", `${params.slug}.mdx`),
-    "utf8",
+    "utf8"
   );
   const { data, content } = matter(source);
   const mdxSource = await renderToString(content, {

@@ -39,11 +39,13 @@ export default function Code({ codeString, language, metastring }) {
     const shouldHighlightLine = calculateLinesToHighlight(metastring);
     return (
       <Suspense
-        fallback={<Wrapper>
-          <Pre>
-            <code className="max-w-screen-md">{codeString}</code>
-          </Pre>
-        </Wrapper>}
+        fallback={
+          <Wrapper>
+            <Pre>
+              <code className="max-w-screen-md">{codeString}</code>
+            </Pre>
+          </Wrapper>
+        }
       >
         <HighlightLoadable
           language={language}
