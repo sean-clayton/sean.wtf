@@ -25,7 +25,7 @@ module.exports = {
       },
       fontFamily: {
         mono: `"Triplicate T4c", Consolas, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", Monaco, "Courier New", Courier, monospace`,
-        serif: `"Noto Serif", "Source Serif Variable", Iowan Old Style, Apple Garamond, Palatino Linotype, Times New Roman, "Droid Serif", Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol`,
+        serif: `"Vollkorn", "Noto Serif", "Source Serif Variable", Iowan Old Style, Apple Garamond, Palatino Linotype, Times New Roman, "Droid Serif", Times, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol`,
       },
     },
   },
