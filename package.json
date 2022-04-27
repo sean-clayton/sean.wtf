@@ -2,7 +2,7 @@
   "name": "sean.wtf",
   "version": "1.0.0",
   "private": true,
-  "license": "LicenseRef-COPYING",
+  "license": "LicenseRef-LICENSE",
   "scripts": {
     "build": "next build",
     "export": "next export",

@@ -18,6 +18,7 @@ export default function Home({ postData }) {
         />
       </Head>
       <a rel="me" className="hidden" href="https://mastodon.social/@seanc" />
+      <a rel="me" className="hidden" href="https://kolektiva.social/@sc" />
       <PostListLayout posts={postData} />
     </>
   );
