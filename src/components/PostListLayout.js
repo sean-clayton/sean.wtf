@@ -1,4 +1,3 @@
-import { kebabCase } from "lodash-es";
 import Link from "next/link";
 import GlobalHeader from "@/components/GlobalHeader";
 import GlobalFooter from "@/components/GlobalFooter";
@@ -13,20 +12,13 @@ export default function PostListLayout({ posts, title }) {
         {posts.map((p) => {
           return (
             <li className="mb-4 text-yellow-900 flex flex-col" key={p.slug}>
-              <Link href={`/${p.slug}`}>
-                <a className="flex flex-col-reverse md:flex-row justify-between items-start text-lg mb-1">
-                  <div>{p.frontMatter.title}</div>
-                  <div className="text-xs md:ml-6 min-w-max">
-                    {formatDate(new Date(p.frontMatter.date))}
-                  </div>
-                </a>
-              </Link>
-              <div className="flex flex-wrap">
-                {p.frontMatter.series.map((series) => (
-                  <Link key={series} href={`/series/${kebabCase(series)}`}>
-                    <a className="text-xs mr-2">#{series}</a>
-                  </Link>
-                ))}
+              <div className="flex flex-col md:flex-row justify-between items-start text-lg mb-1">
+                <Link href={`/${p.slug}`}>
+                  <a>{p.frontMatter.title}</a>
+                </Link>
+                <div className="text-xs md:ml-6 min-w-max">
+                  {formatDate(new Date(p.frontMatter.date))}
+                </div>
               </div>
             </li>
           );
